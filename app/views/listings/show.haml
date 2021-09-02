@@ -1,0 +1,216 @@
+- content_for :javascript do
+  initialize_listing_view('#{I18n.locale}');
+- content_for :extra_javascript do
+  :javascript
+    window.ST.listing();
+  - maps_key = MarketplaceHelper.google_maps_key(@current_community.id)
+  - key_param = maps_key ? "?key=#{maps_key}" : ""
+  - needs_maps = !FeatureFlagHelper.feature_enabled?(:topbar_v1) || search_mode == :keyword
+  = javascript_include_tag "//maps.googleapis.com/maps/api/js#{key_param}" if needs_maps
+
+- content_for :title, raw(@listing.title)
+- content_for :meta_author, PersonViewUtils.person_display_name(@listing.author, @current_community)
+- content_for :meta_description, StringUtils.first_words(@listing.description, 15)
+- content_for :meta_image, @listing.listing_images.first.image.url(:medium) if !@listing.listing_images.empty?
+- dimensions = @listing.listing_images.first.get_dimensions_for_style(:medium) if !@listing.listing_images.empty?
+- content_for :meta_image_width, dimensions[:width].to_s if !@listing.listing_images.empty?
+- content_for :meta_image_height, dimensions[:height].to_s if !@listing.listing_images.empty?
+
+- content_for :title_header do
+  %h1
+    %span#listing-title.listing-title= @listing.title
+
+%script{type: "text/template", class: "template", id: "image-frame-template"}
+  .listing-image-frame
+    #listing-image-link.listing-image-frame-content
+      .listing-image-vertical-centerfing{:class => "${aspectRatioClass}" }
+        %img{:src => "${url}", :alt => @listing.title, :class => "listing-image ${aspectRatioClass}"}
+
+%script{type: "text/template", class: "template", id: "image-thumbnail-template"}
+  .listing-image-thumbnail-container
+    %img.listing-image-thumbnail{src: "${url}"}
+    .fade
+
+= render partial: 'layouts/onboarding_popup_wrapper'
+
+.row
+  .col-8.listing-details-container
+    .row
+      .col-12
+        - with_image_frame(@listing) do |reason, listing_images|
+          - if reason == :images_ok
+            .listing-image-carousel
+              #listing-image-frame
+
+              - if @listing_presenter.prev_image_id && @listing_presenter.next_image_id
+                = link_to params.permit(:id, :locale).merge(image: @listing_presenter.prev_image_id), class: "listing-image-navi listing-image-navi-left", id: "listing-image-navi-left" do
+                  .listing-image-navi-arrow-container
+                    .listing-image-arrow-icon-container.left
+                      = icon_tag("directleft", ["navigate-icon-fix", "listing-image-navi-arrow"])
+                = link_to params.permit(:id, :locale).merge(image: @listing_presenter.next_image_id), class: "listing-image-navi listing-image-navi-right", id: "listing-image-navi-right" do
+                  .listing-image-navi-arrow-container
+                    .listing-image-arrow-icon-container.right
+                      = icon_tag("directright", ["navigate-icon-fix", "listing-image-navi-arrow"])
+            #thumbnail-stripe.listing-image-thumbnail-stripe
+
+            - content_for :extra_javascript do
+              :javascript
+                var listingImages = #{raw listing_images.map { |image| ListingImageJsAdapter.new(image) }.to_json }
+                var currentImage = #{params[:image].present? ? params[:image].to_i : listing_images.first.id};
+                ST.listingImages(listingImages, currentImage);
+          - else
+            .listing-image-text-container
+              .listing-image-frame
+                .listing-image-frame-content
+                  .listing-image-vertical-centering
+                    .listing-no-image
+                      - if reason == :images_processing
+                        = t("listings.show.processing_uploaded_image")
+                      - else
+                        = t(".no_description")
+    .row
+      .col-12
+
+        - if @listing.event.present?
+
+          = icon_tag('calendar', ["icon-fix"])
+
+          %span{ style: "font-weight:bold;" }
+            - if @listing.event['start_at_time'].nil? or @listing.event['end_at_time'].nil?
+
+              - if @listing.event
+                - if @listing.event['start_at'].to_date == @listing.event['end_at'].to_date
+                  = @listing.event['start_at'].strftime('%a %b %e @ %H:%M%P') + ' - ' + @listing.event['end_at'].strftime('%-I:%M%P')
+                - else
+                  = @listing.event['start_at'].strftime('%a %b %e @ %H:%M%P') + ' to ' + @listing.event['end_at'].strftime('%a %b %e @ %-I:%M%P')
+            - else
+
+              - if @listing.event['start_at'].to_date == @listing.event['end_at'].to_date
+                = @listing.event['start_at'].strftime('%a %b %e') + ' - ' + @listing.event['start_at_time'].strftime('%-I:%M%P') + "-" + @listing.event['end_at_time'].strftime('%-I:%M%P')
+              - else
+                = @listing.event['start_at'].strftime('%a %b %e') + ' - ' + @listing.event['start_at_time'].strftime('%-I:%M%P') + ' to ' + @listing.event['end_at'].strftime('%a %b %e') + ' - ' + @listing.event['end_at_time'].strftime('%-I:%M%P')
+
+
+        - if !@current_community.private?
+          = render "social_buttons"
+
+        - if @listing.description && !@listing.description.blank?
+          - text_with_line_breaks do
+            - text        = @listing.description.html_safe
+            - description = auto_link(text, :link => :all, :html => { :target => '_blank' })
+            = a_with_target_blank(description).html_safe
+          - if( @listing_presenter.youtube_link_ids.present?)
+            - @listing_presenter.youtube_link_ids.each do |youtube_id|
+              .listing-description-youtube-wrapper
+                %iframe.listing-description-youtube-iframe{ title: t("listings.show.youtube_video_player"), width: 640, height:390, src: sanitize("https://www.youtube.com/embed/#{youtube_id}", tags:[]), frameborder: 0, allowfullscreen: true}
+
+    - unless (@listing.closed? && !current_user?(@listing.author)) || !@current_community.listing_comments_in_use
+      .view-item
+        #comments.discussion.overflow-allowed
+          %h2
+            = icon_tag("chat_bubble", ["icon-with_text icon-styling"])
+            .text-with-icon
+              = t(".comments")
+              %span#comment_count= "(#{@listing.comments_count})"
+          #follow-links.follow-links
+            = render :partial => "follow_links"
+          #comment-list
+            = render :partial => "comment", :collection => @listing.comments
+          #comment-form
+            = render :partial => "comment_form"
+
+
+    - @listing.custom_field_values.each do |custom_field_value|
+      .row
+        .col-12
+          - custom_field_value.with_type do |question_type|
+            = render :partial => "listings/custom_field_partials/#{question_type}", :locals => { :custom_field_value => custom_field_value }
+
+    - if @current_community.show_listing_publishing_date?
+      .row
+        .col-12
+          .icon-with-text-container
+            = icon_tag("calendar", ["icon-part"])
+            .text-part
+              %b
+                = t(".listing_created_at")
+                = l @listing.created_at, :format => :short_date
+
+
+    -#- if !@current_community.private?
+    -#  = render "social_buttons"
+
+
+
+
+
+  %aside.col-4
+    - if @listing.price
+      .row-with-divider
+        .col-12
+          .listing-price
+            %span.listing-price-amount
+              = MoneyViewUtils.to_humanized(@listing.price)
+            - with_quantity_text(@current_community, @listing) do |text|
+              %span.listing-price-quantity
+                = text
+
+    .row-with-divider
+      .col-12
+        #listing-message-links
+          = render :partial => "listing_actions"
+
+    .row-with-divider.no-border-no-margin-bottom
+      .col-12
+        .listing-author
+          .listing-author-avatar
+            = medium_avatar_thumb(@listing.author, {:class => "listing-author-avatar-image"})
+          .listing-author-details
+            .listing-author-name
+              = link_to PersonViewUtils.person_display_name(@listing.author, @current_community), @listing.author, :id => "listing-author-link", :class => "listing-author-name-link", :title => "#{PersonViewUtils.person_display_name(@listing.author, @current_community)}"
+            - if @listing.author != @current_user && @current_community.allow_free_conversations?
+              .listing-author-contact
+                %a#listing-contact{href: contact_to_listing_path(:listing_id => @listing.id.to_s), :class => "listing-author-contact-button"}
+                  .content
+                    = t(".contact")
+
+    .row-with-divider.listing-author-activity
+      .col-12
+
+        -#.row-with-divider.listing-author-activity
+        - if @listing_presenter.received_testimonials.size > 0
+          %i.listing-author-activity-icon{:class => icon_class("like")}
+        .listing-author-activity-item
+          .listing-author-activity-value
+            - if @listing_presenter.received_testimonials.size > 0
+              = @listing_presenter.feedback_positive_percentage.to_s + "%"
+              = t("people.show.positive")
+            - if @listing_presenter.received_testimonials.size > 0
+              = t(".feedback")
+              = "(#{@listing_presenter.received_positive_testimonials.size}/#{@listing_presenter.received_testimonials.size})"
+
+          - if @current_user.present?
+            = icon_tag("chat_bubble", ["icon-with_text icon-styling"])
+            = link_to("Add a Review for #{ PersonViewUtils.person_display_name(@listing.author, @current_community) }", "#", id: "myBtn", class: "review-weight")
+            = render "reviews", locals: { listing: @listing }
+          - else
+            = link_to("Add a Review for #{ @listing.author.given_name }", login_path, class: "review-weight")
+
+    - if @listing.origin_loc && @listing.origin_loc.address != ""
+      .row
+        .googlemap{ class: "#{ mobile_device == "mobile" || mobile_device == "tablet" ? "" : "map-width"}" }
+          - maps_key = MarketplaceHelper.google_maps_key(@current_community.id)
+          .embed-container{style:"width:490px;"}
+            %div
+              %iframe{width: "600", height: "550", frameborder: "0",
+                    src: "https://www.google.com/maps/embed/v1/place?key=#{maps_key}&q=#{CGI.escape(@listing.location.address)}&language=#{I18n.locale}"}
+
+      .row
+        .col-12
+          -#- unless @near_by_listings.empty? rescue []
+          -#  .row
+          -#    %h5 Things to Do Nearby:
+          -#  .row
+          -#    .col-12
+          -#      = render :partial => "listings/near_by_listings_grid", :locals => { person: @person, limit: @per_page, listings:  @near_by_listings.delete_if { |list| list.id == @listing.id } }
+          = render :partial => "origin", :locals => { :origin_loc => @listing.origin_loc }

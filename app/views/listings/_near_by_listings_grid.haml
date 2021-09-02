@@ -1,0 +1,4 @@
+.people-fluid-thumbnail-grid-container
+  .people-fluid-thumbnail-grid#profile-listings-list
+    = render :partial => "people/grid_item", :collection => listings[0..27], :as => :listing, locals: { width_class: "width-adjustment-class", :@hide_price => "disable-price" }
+

@@ -1,0 +1,3 @@
+.people-fluid-thumbnail-grid-container
+  .people-fluid-thumbnail-grid#people-events-list
+    = render :partial => "people/grid_item", :collection => events, :as => :listing, locals: { width_class: " " }

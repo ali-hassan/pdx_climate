@@ -1,0 +1,5 @@
+= javascript_include_tag Ckeditor.cdn_url
+= form.label :description, t('listings.form.description.detailed_description'), :class => "input"
+= render partial: "layouts/info_text", locals: { text: t("listings.form.description.youtube_info") }
+= render partial: "layouts/info_text", locals: { text: t("listings.form.description.resize_editor") }
+= form.cktext_area(:description, :maxlength => "20000", :class => "listing_description_textarea")

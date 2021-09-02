@@ -1,0 +1,71 @@
+#  Share Oregon settings.
+
+default:
+  google_maps_key: AIzaSyCVDKY-luQ8iemBagIFepYlez_mF7AxsRw
+
+  paypal_username: rick-facilitator_api1.shareoregon.com
+  paypal_password: X67F4WE7ZE2GFYW8
+  paypal_signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AogZ3yDD5CvRPoU9Oqo3-hdHzQwX
+  paypal_app_id: APP-80W284485P519543T # Global test id
+  paypal_partner_id: Z96DECJ5VYNW4 # payerID for paypal platform owner account
+  # Paypal environment to use. Either :sandbox or :live
+  paypal_endpoint: sandbox
+
+  paypal_button_source: # Unique value given to you by your PayPal contact
+
+
+  # after authorization there is 3 day period before expiration
+  paypal_expiration_period: 3
+  # The domain that we want Paypal to send IPN notifications to
+  # Note! You must also add the hook url for your production deployment
+  # manually to your production paypal account profile.
+  paypal_ipn_domain:
+  paypal_ipn_protocol: http
+  asset_host: www.shareoregon.com
+#  user_asset_host: www.shareoregon.com
+
+
+development:
+  # Add local `development` environment configuration overrides here
+  icon_pack: "ss-pika"
+  map_listings_limit: 2000
+  asset_host: www.shareoregon.com
+#  user_asset_host: www.shareoregon.com
+
+test:
+  # Add local `test` environment configuration overrides here
+  icon_pack: "ss-pika"
+  map_listings_limit: 2000
+  asset_host: www.shareoregon.com
+#  user_asset_host: www.shareoregon.com
+
+staging:
+  icon_pack: "ss-pika"
+  secret_key_base: "33c7f316df221813a9ef14d4b939a49373f2f047816b8bbc61002bcf54b55462bea392fd99b4ca31e7b24211f7dbea1248b6c86b8f16ca774c46c53babb9e20b"
+  #secret_key_base: "fd1af50b59b5e27776941b3205f92aca0f704c2252225cf93e3d97ae53f4774d25736cbdb19c1580839a2f68e15009209227e966003f53932c1bcc5d65616948"
+  map_listings_limit: 2000
+
+  # Paypal credentials for the platform owner.
+  paypal_username: rick_api1.shareoregon.com
+  paypal_password: FFGSPRBP2TZ93NMV
+  paypal_signature: AmIF145e7vHbOWNGrVojetXUqpKmAcKjnf6Z0KrO9TNfHcjCiGV7UHnN
+  paypal_app_id: APP-7HC06763Y29525230
+  paypal_partner_id: Z96DECJ5VYNW4 # payerID for paypal platform owner account
+  # Paypal environment to use. Either :sandbox or :live
+  paypal_endpoint: live
+  asset_host: www.shareoregon.com
+#  user_asset_host: www.shareoregon.com
+
+production:
+  icon_pack: "ss-pika"
+  secret_key_base: "33c7f316df221813a9ef14d4b939a49373f2f047816b8bbc61002bcf54b55462bea392fd99b4ca31e7b24211f7dbea1248b6c86b8f16ca774c46c53babb9e20b"
+  # Paypal credentials for the platform owner.
+  paypal_username: rick_api1.shareoregon.com
+  paypal_password: FFGSPRBP2TZ93NMV
+  paypal_signature: AmIF145e7vHbOWNGrVojetXUqpKmAcKjnf6Z0KrO9TNfHcjCiGV7UHnN
+  paypal_app_id: APP-7HC06763Y29525230
+  paypal_partner_id: Z96DECJ5VYNW4 # payerID for paypal platform owner account
+  ## Paypal environment to use. Either :sandbox or :live
+  paypal_endpoint: live
+  map_listings_limit: 2000
+  user_asset_host: https://www.shareoregon.com

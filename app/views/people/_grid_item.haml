@@ -1,0 +1,4 @@
+.people-fluid-thumbnail-grid-item{ class: width_class }
+  %div
+    -# Listing image
+    = render :partial => "layouts/grid_item_listing_image", :locals => {:listing => listing, :modifier_class => "people-listings", :@hide_price => @hide_price}

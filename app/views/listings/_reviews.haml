@@ -1,0 +1,46 @@
+- content_for :javascript do
+  initialize_give_feedback_form("#{I18n.locale}","#{t('error_messages.testimonials.you_must_select_a_grade')}","#{t('error_messages.testimonials.you_must_explain_not_neutral_feedback')}");
+
+- content_for :extra_javascript do
+  :javascript
+    ST.initializeRadioButtons({
+      buttons: [".js-positive-radio-button", ".js-negative-radio-button"],
+      input: ".js-testimonial-grade"
+    });
+
+- transaction = @listing.create_free_transaction_for_review(@current_user) rescue nil
+
+#myModal.modal
+  .modal-content
+    %span.close ×
+    .view-item
+      #comments.discussion.overflow-allowed
+
+
+    .centered-section.testimonial-form
+      %h2
+        = t("testimonials.new.give_feedback_to", :person => transaction.other_party(@current_user).name(@current_community))
+      %p
+        = t("testimonials.new.this_will_be_shown_in_profile", :person => PersonViewUtils.person_display_name_for_type(transaction.other_party(@current_user), "first_name_only"))
+
+
+        #comment-form
+          = form_for Testimonial.new, :url => person_message_feedbacks_path(:person_id => @current_user.id, :message_id => transaction.id) do |form|
+            = form.error_messages
+            = form.label :text, t('testimonials.new.textual_feedback')
+            = form.text_area :text, :placeholder => t("testimonials.new.default_textual_feedback")
+            = form.label :grade, t("testimonials.new.grade")
+            = form.hidden_field :free, value: true
+            %input.js-testimonial-grade{type: :hidden, name: "testimonial[grade]"}
+
+            %a#positive-grade-link.radio-button.radio-button-positive.js-positive-radio-button{ data: { :"radio-button-value" => 1 } }
+              .radio-button-icon
+                = icon_tag("like", ["link-icon"])
+              .radio-button-label= t("testimonials.new.positive")
+            %a#negative-grade-link.radio-button.radio-button-negative.js-negative-radio-button{ data: { :"radio-button-value" => 0 } }
+              .radio-button-icon
+                = icon_tag("dislike", ["link-icon"])
+              .radio-button-label= t("testimonials.new.negative")
+            #testimonial-grade-error
+
+            = form.button t("testimonials.new.send_feedback"), :class => "send_button", :id => "send_testimonial_button"

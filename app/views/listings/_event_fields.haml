@@ -1,0 +1,129 @@
+.nested-fields.well.well-compact.row
+  
+  .col-3.event_datetime
+    = f.text_field :start_at, value: (f.object.start_at.nil? ? "" : f.object.start_at.strftime("%m/%d/%Y")), class: "datepicker", placeholder: "starts on"
+  .col-2.event_datetime
+    = f.text_field :start_at_time, value: (f.object.start_at_time.nil? ? "" : f.object.start_at_time.strftime("%l:%M%P")), class: "timepicker", placeholder: "time"
+  .col-1
+    to
+  .col-2.event_datetime
+    = f.text_field :end_at_time, value: (f.object.end_at_time.nil? ? "" : f.object.end_at_time.strftime("%l:%M%P")), class: "timepicker", placeholder: "time"
+  .col-3.event_datetime  
+    = f.text_field :end_at, value: (f.object.end_at.nil? ? "" : f.object.end_at.strftime("%m/%d/%Y")), class: "datepicker", placeholder: "ends on"
+  %br{clear: "all"}
+
+  = check_box_tag "repeat"
+
+  %label.repeats
+    Repeat
+  %br{clear: "all"}
+
+  = link_to_remove_association 'Remove Date/Time', f, data: { enable_form_element: 'add_event' }
+#repeat-event-lightbox
+  %h2
+    Repeat
+  %label
+    Repeats: 
+  = select_tag :frm_repeats_type, options_for_select(["Weekly", "Monthly", "Annually"])
+  %br
+  %label
+    Repeat every:
+  = select_tag :frm_repeats_every, options_for_select(1..30) 
+  %span.repeat_every_text
+    weeks
+  %br
+
+  .repeat_weekly
+    - Date::DAYNAMES.each_with_index do |day, index|
+      .div{style: "float:left;width: 50px;"}
+        %label
+          = day[0]
+        = check_box_tag "frm_repeats_day[]", index
+    %br{clear: "all"}
+
+  .repeat_monthly
+    %label
+      Repeat:
+    = radio_button_tag "repeat_monthly_type", "day_of_month"
+    day of the month
+    = radio_button_tag "repeat_monthly_type", "day_of_week"
+    day of the week
+
+  %label
+    Starts:
+  = text_field_tag "starts_at_repeat", "", disabled: true
+  %br
+  %label
+    Ends:
+  = text_field_tag "frm_ends_at_date", "", class: "datepicker"
+
+  = button_tag "Done", class: "close_event"
+
+= hidden_field_tag :repeats_type
+= hidden_field_tag :repeats_every
+= hidden_field_tag :repeats_day
+= hidden_field_tag :repeat_monthly_type
+= hidden_field_tag :ends_at_repeat
+= hidden_field_tag :ends_at_ocurrences
+= hidden_field_tag :ends_at_date
+
+:css
+  #repeat-event-lightbox{
+   padding: 50px;
+   background: #FFF;
+   display: none;
+   width: 500px;
+   height: 340px;
+   padding: 10px 20px;
+  }
+
+  #repeat-event-lightbox label{
+    display:inline-block;
+    width: auto;
+  }
+
+  .event_datetime{
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .event_datetime .timepicker{
+    padding-right: 0 !important;
+  }
+  label.repeats{
+    display:inline;
+  }
+
+  .repeat_monthly{
+    display:none;
+  }
+
+  #frm_ends_at_ocurrences, #frm_ends_at_date{
+    display:inline-block;
+    margin-top: 10px;
+    width: 50px;
+  }
+
+  #frm_ends_at_date, #starts_at_repeat{
+    width: 100px;
+  }
+
+  .event_datetime input.datepicker{
+    width: 120px;
+  }
+
+  .event_datetime input.timepicker{
+    width: 65px;
+    font-size: 15px;
+  }
+
+  #event .col-3{
+    width: 28%;
+  }
+
+  #event .col-1{
+    padding: 15px 0 0 15px;
+  }
+
+  #event .datepicker{
+    font-size: 15px !important;
+  }

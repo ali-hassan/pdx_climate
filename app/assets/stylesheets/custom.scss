@@ -1,0 +1,111 @@
+.icon-styling {
+  color: #009aee !important;
+}
+.email-text-description {
+  font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size:16px!important;
+  font-weight:100px;
+  color:#898989;
+  font-style:italic;
+  line-height:22px;
+  margin-top:0;
+  margin-bottom:8px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 1% auto;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #888;
+  width: 45%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.review-weight {
+  font-weight: bold;
+}
+.review-font {
+  font-size: 14pt;
+}
+.google-maps-link {
+  display: none !important;
+}
+.width-adjustment-class {
+  width: 50% !important;
+}
+.map-width {
+  width: 500px;
+}
+.disable-price {
+  display: none;
+}
+.no-border-no-margin-bottom {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+//.embed-container:before{
+//  content: '';
+//  background: #fff;
+//  position: absolute;
+//  top: 10px;
+//  z-index: 999999;
+//  height: 92px;
+//  right: 6px;
+//  width: 133px;
+//  display: none;
+//  box-shadow: 4px 2px 3px rgba(0,0,0,0.1);
+//}
+.embed-container > div{
+  position: relative;
+  padding-bottom: 75%;
+  margin-right: -8px;
+  overflow: hidden;
+}
+.hide {
+  display: none;
+}
+.toggle-menu-custom {
+  height: auto;
+  max-height: 485px;
+  overflow-x: hidden;
+}
+.custom-style {
+  padding-top: 10px;
+}
+.custom-height {
+  height: 40px !important;
+}
+div.profile-photo img {
+  display: none;
+}
+div.profile-photo {
+  height: 0px !important;
+}
