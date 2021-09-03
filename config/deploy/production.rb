@@ -1,5 +1,5 @@
 set :stage, :production
-ask :branch, "development-shareoregon-replica"
+ask :branch, "master"
 
 server 'ubuntu@54.191.121.195', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
