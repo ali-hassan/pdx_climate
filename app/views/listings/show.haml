@@ -205,7 +205,7 @@
               %iframe{width: "600", height: "550", frameborder: "0",
                     src: "https://www.google.com/maps/embed/v1/place?key=#{maps_key}&q=#{CGI.escape(@listing.location.address)}&language=#{I18n.locale}"}
 
-      .rowa
+      .row
         .col-12
           - unless @near_by_listings.empty?
             .row
