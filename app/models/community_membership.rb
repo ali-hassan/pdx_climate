@@ -83,3 +83,6 @@ class CommunityMembership < ApplicationRecord
     status == BANNED
   end
 end
+###
+# To update a customer manually
+# Email.all.map{|e| e.person.community_membership.update status: "accepted"}
