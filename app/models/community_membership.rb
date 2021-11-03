@@ -86,3 +86,5 @@ end
 ###
 # To update a customer manually
 # Email.all.map{|e| e.person.community_membership.update status: "accepted"}
+# For single user verification / confirmation
+# Email.last.person.community_membership.update status: "accepted"
