@@ -45,6 +45,10 @@
 
     = link_to '#', :class => "custom-fields-action-down admin-sort-button", :tabindex => "-1" do
       = icon_tag("directdown", ["icon-fix"])
+
+- if @service.show_custom_fields?
+  = render partial: 'custom_field', collection: @service.custom_fields, as: :custom_field
+
 .row
   .col-4
     %span.custom-fields-mobile-list-title.hidden-tablet
