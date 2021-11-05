@@ -87,4 +87,4 @@ end
 # To update a customer manually
 # Email.all.map{|e| e.person.community_membership.update status: "accepted"}
 # For single user verification / confirmation
-# Email.last.person.community_membership.update status: "accepted"
+# Email.find_by_address("rickrey@gmail.com").person.community_membership.update status: "accepted"
