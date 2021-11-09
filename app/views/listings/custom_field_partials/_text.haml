@@ -2,7 +2,7 @@
 %b= "#{question_name}:"
 - text_with_url_links do
   = custom_field_value.text_value
-- val = custom_field_value.text_value
+-#- val = custom_field_value.text_value
 - if val.include?("https")
   %a{href: val}
     = val
