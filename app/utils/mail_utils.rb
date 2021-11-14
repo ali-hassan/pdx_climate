@@ -32,7 +32,7 @@ module MailUtils
       message.text_part.body = Premailer.new(message.text_part.body.to_s, with_html_string: true).to_plain_text
       message.html_part.body = Premailer.new(message.html_part.body.to_s, with_html_string: true).to_inline_css
     else
-      if message.subject == "Welcome to ShareOregon" && @current_community.community_customizations.first.try(:welcome_email_content).present?
+      if message.subject == "Welcome to Oregon Climate Action Hub" && @current_community.community_customizations.first.try(:welcome_email_content).present?
         message.body = Premailer.new(@current_community.community_customizations.first.welcome_email_content, with_html_string: true).to_inline_css
       else
         message.body = Premailer.new(message.body.to_s, with_html_string: true).to_inline_css
