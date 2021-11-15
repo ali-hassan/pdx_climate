@@ -404,9 +404,9 @@ en:
         google_analytics_key_info_text_with_instructions: "Tracking ID of your Google Analytics account. %{instructions_link}."
         google_analytics_instructions_link_text: "Read more about connecting Google Analytics"
         sharetribe_analytics: "Oregon Climate Action Hub analytics"
-        sharetribe_analytics_info_text_with_instructions: "To improve Oregon Climate Action Hub's services and support, Shareoregon tracks website members activity. Personal data is not collected and this information is not shared outside the Shareoregon team. This tracking can be disabled entirely. %{instructions_link}"
+        sharetribe_analytics_info_text_with_instructions: "To improve Oregon Climate Action Hub's services and support, Oregon Climate Action Hub tracks website members activity. Personal data is not collected and this information is not shared outside the Oregon Climate Action Hub team. This tracking can be disabled entirely. %{instructions_link}"
         sharetribe_analytics_instructions_link_text: "Read more about Oregon Climate Action Hub's analytics."
-        end_user_analytics: "Allow Oregon Climate Action Hub to track members activity in order to improve Shareoregon's services"
+        end_user_analytics: "Allow Oregon Climate Action Hub to track members activity in order to improve Oregon Climate Action Hub's services"
         save: "Save settings"
       logo_link:
         title: "Logo link"
