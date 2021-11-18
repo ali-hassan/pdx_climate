@@ -70,7 +70,6 @@
   %p
     - stripe_link = "https://stripe.com"
     Transactions are handled securely by #{link_to("Stripe", stripe_link, target: "_blank").html_safe}. You do not need a Stripe account, but they charge 2.9%+30 cents per transaction. Oregon Climate Action Hub does not store your information or charge a fee. Data transmissions are encrypted for your security.
-    -#= t("stripe_accounts.form_new.need_info")
   .row.paypal-wizard.connect-row
     %div
       .paypal-wizard-content.connect-row
