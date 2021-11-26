@@ -173,7 +173,7 @@
                 %a#listing-contact{href: contact_to_listing_path(:listing_id => @listing.id.to_s), :class => "listing-author-contact-button"}
                   .content
                     = t(".contact")
-                      
+
     - if @listing.origin_loc && @listing.origin_loc.address != ""
       .row
         .googlemap{ class: "#{ mobile_device == "mobile" || mobile_device == "tablet" ? "" : "map-width"}" }

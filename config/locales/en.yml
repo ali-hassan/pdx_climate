@@ -5,6 +5,7 @@ en:
         separator: "."
         delimiter: ","
         format: "%u%n"
+        question: "?"
   admin:
     categories:
       edit:
