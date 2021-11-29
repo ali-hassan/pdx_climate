@@ -6,6 +6,7 @@ en:
         delimiter: ","
         format: "%u%n"
         question: "?"
+        exclamation: "!"
   admin:
     categories:
       edit:
