@@ -8,7 +8,6 @@ class InboxesController < ApplicationController
   def show
     # We use pageless scroll, so the page should be always the first one (1) when request was not AJAX request
     params[:page] = 1 unless request.xhr?
-
     pagination_opts = PaginationViewUtils.parse_pagination_opts(params)
 
     inbox_rows = InboxService.inbox_data(
@@ -17,8 +16,8 @@ class InboxesController < ApplicationController
       pagination_opts[:limit],
       pagination_opts[:offset])
 
+    #todo: innbox count
     count = InboxService.inbox_data_count(@current_user.id, @current_community.id)
-
     inbox_rows = inbox_rows.map { |inbox_row|
       extended_inbox = inbox_row.merge(
         path: path_to_conversation_or_transaction(inbox_row),
