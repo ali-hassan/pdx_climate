@@ -8,26 +8,27 @@ class InboxesController < ApplicationController
   def show
     # We use pageless scroll, so the page should be always the first one (1) when request was not AJAX request
     params[:page] = 1 unless request.xhr?
+
     pagination_opts = PaginationViewUtils.parse_pagination_opts(params)
 
     inbox_rows = InboxService.inbox_data(
-      @current_user.id,
-      @current_community.id,
-      pagination_opts[:limit],
-      pagination_opts[:offset])
+        @current_user.id,
+        @current_community.id,
+        pagination_opts[:limit],
+        pagination_opts[:offset])
 
-    #todo: innbox count
     count = InboxService.inbox_data_count(@current_user.id, @current_community.id)
+
     inbox_rows = inbox_rows.map { |inbox_row|
       extended_inbox = inbox_row.merge(
-        path: path_to_conversation_or_transaction(inbox_row),
-        last_activity_ago: time_ago(inbox_row[:last_activity_at]),
-        title: inbox_title(inbox_row)
+          path: path_to_conversation_or_transaction(inbox_row),
+          last_activity_ago: time_ago(inbox_row[:last_activity_at]),
+          title: inbox_title(inbox_row)
       )
 
       if inbox_row[:type] == :transaction
         extended_inbox.merge(
-          listing_url: listing_path(id: inbox_row[:listing_id])
+            listing_url: listing_path(id: inbox_row[:listing_id])
         )
       else
         extended_inbox
@@ -40,14 +41,14 @@ class InboxesController < ApplicationController
 
     if request.xhr?
       render :partial => "inbox_row",
-        :collection => paginated_inbox_rows, :as => :conversation,
-        locals: {
-          payments_in_use: @current_community.payments_in_use?
-        }
+             :collection => paginated_inbox_rows, :as => :conversation,
+             locals: {
+                 payments_in_use: @current_community.payments_in_use?
+             }
     else
       render locals: {
-        inbox_rows: paginated_inbox_rows,
-        payments_in_use: @current_community.payments_in_use?
+          inbox_rows: paginated_inbox_rows,
+          payments_in_use: @current_community.payments_in_use?
       }
     end
   end
@@ -56,19 +57,19 @@ class InboxesController < ApplicationController
 
   def inbox_title(inbox_item)
     title = if InboxService.last_activity_type(inbox_item) == :message
-      inbox_item[:last_message_content]
-    else
-      action_messages = TransactionViewUtils.create_messages_from_actions(
-        inbox_item[:transitions],
-        inbox_item[:other],
-        inbox_item[:starter],
-        Maybe(inbox_item)[:payment_total].or_else(nil),
-        inbox_item[:payment_gateway],
-        !inbox_item[:buyer_commission]
-      )
+              inbox_item[:last_message_content]
+            else
+              action_messages = TransactionViewUtils.create_messages_from_actions(
+                  inbox_item[:transitions],
+                  inbox_item[:other],
+                  inbox_item[:starter],
+                  Maybe(inbox_item)[:payment_total].or_else(nil),
+                  inbox_item[:payment_gateway],
+                  !inbox_item[:buyer_commission]
+              )
 
-      action_messages.last[:content]
-    end
+              action_messages.last[:content]
+            end
   end
 
   def path_to_conversation_or_transaction(inbox_item)
