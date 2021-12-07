@@ -122,7 +122,7 @@ module InboxService
     last_message_conv_ids, last_transition_transaction_ids = reduce_transaction_and_conv_ids(result_set)
     message_store = latest_messages_for_conversations(last_message_conv_ids)
 
-    result_set.reject!{|x| x[:listing_id].nil?}
+    # result_set.reject!{|x| x[:listing_id].nil?}
     result_set.map do |result|
       if result[:transaction_id].present?
         InboxTransaction[
