@@ -42,45 +42,45 @@ module InboxService
   }
 
   inbox_row_common_spec = [
-    [:conversation_id, :fixnum, :mandatory],
-    [:last_activity_at, :utc_str_to_time, :mandatory],
-    [:current_is_starter, :mandatory, transform_with: @tiny_int_to_bool],
-    [:current_id, :string, :mandatory],
-    [:other_id, :string, :mandatory],
+      [:conversation_id, :fixnum, :mandatory],
+      [:last_activity_at, :utc_str_to_time, :mandatory],
+      [:current_is_starter, :mandatory, transform_with: @tiny_int_to_bool],
+      [:current_id, :string, :mandatory],
+      [:other_id, :string, :mandatory],
 
-    [:should_notify, :mandatory],
+      [:should_notify, :mandatory],
 
-    [:starter, :mandatory],
-    [:current, :mandatory],
-    [:other, :mandatory]
+      [:starter, :mandatory],
+      [:current, :mandatory],
+      [:other, :mandatory]
   ]
 
   conversation_spec = [
-    [:type, const_value: :conversation],
-    [:last_message_at, :time, :mandatory],
-    [:last_message_content, :string, :optional]
+      [:type, const_value: :conversation],
+      [:last_message_at, :time, :mandatory],
+      [:last_message_content, :string, :optional]
   ]
 
   transaction_spec = [
-    [:type, const_value: :transaction],
-    [:transaction_id, :fixnum, :mandatory],
+      [:type, const_value: :transaction],
+      [:transaction_id, :fixnum, :mandatory],
 
-    [:listing_id, :fixnum, :mandatory],
-    [:listing_title, :string, :mandatory],
-    [:listing_deleted, transform_with: @tiny_int_to_bool],
+      [:listing_id, :fixnum, :mandatory],
+      [:listing_title, :string, :mandatory],
+      [:listing_deleted, transform_with: @tiny_int_to_bool],
 
-    [:last_transition_at, :time, :mandatory],
-    [:last_transition_to_state, :string, :mandatory],
-    [:last_transition_metadata, :hash, :optional],
-    [:last_message_at, :time, :optional],
-    [:last_message_content, :string, :optional],
+      [:last_transition_at, :time, :mandatory],
+      [:last_transition_to_state, :string, :mandatory],
+      [:last_transition_metadata, :hash, :optional],
+      [:last_message_at, :time, :optional],
+      [:last_message_content, :string, :optional],
 
-    [:payment_total, :money, :optional],
+      [:payment_total, :money, :optional],
 
-    [:author, :mandatory],
-    [:waiting_feedback, :mandatory, transform_with: @tiny_int_to_bool],
-    [:transitions, :mandatory], # Could add Array validation
-    [:buyer_commission, :bool, :optional]
+      [:author, :mandatory],
+      [:waiting_feedback, :mandatory, transform_with: @tiny_int_to_bool],
+      [:transitions, :mandatory], # Could add Array validation
+      [:buyer_commission, :bool, :optional]
   ]
 
   InboxConversation = EntityUtils.define_builder(*inbox_row_common_spec, *conversation_spec)
@@ -92,9 +92,9 @@ module InboxService
 
     connection = ActiveRecord::Base.connection
     sql = SQLUtils.ar_quote(connection, @construct_notification_count_sql,
-      person_id: person_id,
-      community_id: community_id,
-      conversation_ids: conversation_ids
+                            person_id: person_id,
+                            community_id: community_id,
+                            conversation_ids: conversation_ids
     )
 
     connection.select_value(sql) == 1 ? 0 : connection.select_value(sql)
@@ -106,11 +106,11 @@ module InboxService
 
     connection = ActiveRecord::Base.connection
     sql = SQLUtils.ar_quote(connection, @construct_sql,
-      person_id: person_id,
-      community_id: community_id,
-      limit: limit,
-      offset: offset,
-      conversation_ids: conversation_ids
+                            person_id: person_id,
+                            community_id: community_id,
+                            limit: limit,
+                            offset: offset,
+                            conversation_ids: conversation_ids
     )
 
     result_set = connection.execute(sql).each(as: :hash).map { |row| HashUtils.symbolize_keys(row) }
@@ -126,15 +126,15 @@ module InboxService
     result_set.map do |result|
       if result[:transaction_id].present?
         InboxTransaction[
-          extend_transaction(
-            extend_common(result, people_store, message_store)
-          )
+            extend_transaction(
+                extend_common(result, people_store, message_store)
+            )
         ]
       else
         InboxConversation[
-          extend_conversation(
-            extend_common(result, people_store, message_store)
-          )
+            extend_conversation(
+                extend_common(result, people_store, message_store)
+            )
         ]
       end
     end
@@ -161,9 +161,9 @@ module InboxService
 
     connection = ActiveRecord::Base.connection
     sql = SQLUtils.ar_quote(connection, @construct_inbox_row_count_sql,
-      person_id: person_id,
-      community_id: community_id,
-      conversation_ids: conversation_ids
+                            person_id: person_id,
+                            community_id: community_id,
+                            conversation_ids: conversation_ids
     )
 
     connection.select_value(sql)
@@ -176,17 +176,17 @@ module InboxService
     content, message_at = message_store[common[:conversation_id]]
 
     common.merge(
-      starter: people[starter_id],
-      other: people[other_id],
-      current: people[current_id],
-      last_message_content: content,
-      last_message_at: message_at
+        starter: people[starter_id],
+        other: people[other_id],
+        current: people[current_id],
+        last_message_content: content,
+        last_message_at: message_at
     )
   end
 
   def extend_conversation(conversation)
     conversation.merge(
-      should_notify: !@tiny_int_to_bool.call(conversation[:current_is_read])
+        should_notify: !@tiny_int_to_bool.call(conversation[:current_is_read])
     )
   end
 
@@ -199,29 +199,29 @@ module InboxService
 
     buyer_commission = nil
     payment_total =
-      case payment_gateway.to_sym
-      when :paypal
-        paypal_payments = PaypalService::API::Api.payments
-        Maybe(paypal_payments.get_payment(transaction[:community_id], transaction[:transaction_id]))[:data][:authorization_total].or_else(nil)
-      when :stripe
-        stripe_payments = StripeService::API::Api.payments
-        tx_model = Transaction.find(transaction[:transaction_id])
-        buyer_commission = tx_model.buyer_commission > 0
-        stripe_payments.payment_details(tx_model)[:payment_total]
-      end
+        case payment_gateway.to_sym
+        when :paypal
+          paypal_payments = PaypalService::API::Api.payments
+          Maybe(paypal_payments.get_payment(transaction[:community_id], transaction[:transaction_id]))[:data][:authorization_total].or_else(nil)
+        when :stripe
+          stripe_payments = StripeService::API::Api.payments
+          tx_model = Transaction.find(transaction[:transaction_id])
+          buyer_commission = tx_model.buyer_commission > 0
+          stripe_payments.payment_details(tx_model)[:payment_total]
+        end
 
     should_notify =
-      !@tiny_int_to_bool.call(transaction[:current_is_read]) ||
-      @tiny_int_to_bool.call(transaction[:current_action_required]) ||
-      @tiny_int_to_bool.call(transaction[:waiting_feedback])
+        !@tiny_int_to_bool.call(transaction[:current_is_read]) ||
+            @tiny_int_to_bool.call(transaction[:current_action_required]) ||
+            @tiny_int_to_bool.call(transaction[:waiting_feedback])
 
     transaction.merge(
-      author: transaction[:other],
-      transitions: transitions,
-      should_notify: should_notify,
-      last_transition_at: transaction[:last_transition_at],
-      payment_total: payment_total,
-      buyer_commission: buyer_commission
+        author: transaction[:other],
+        transitions: transitions,
+        should_notify: should_notify,
+        last_transition_at: transaction[:last_transition_at],
+        payment_total: payment_total,
+        buyer_commission: buyer_commission
     )
   end
 
