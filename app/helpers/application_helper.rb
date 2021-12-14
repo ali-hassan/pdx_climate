@@ -313,6 +313,12 @@ module ApplicationHelper
       :path => terms_infos_path,
       :name => "terms"
     }
+    links << {
+      :text => "Resources",
+      :icon_class => icon_class("terms"),
+      :path => resources_infos_path,
+      :name => "resources"
+    }
   end
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize

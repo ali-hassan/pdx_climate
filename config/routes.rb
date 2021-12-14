@@ -406,6 +406,7 @@ Rails.application.routes.draw do
     resources :infos do
       collection do
         get :about
+        get :resources
         get :how_to_use
         get :terms
         get :privacy

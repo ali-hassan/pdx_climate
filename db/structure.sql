@@ -325,6 +325,7 @@ CREATE TABLE `community_customizations` (
   `category_meta_description` text,
   `profile_meta_title` varchar(255) DEFAULT NULL,
   `profile_meta_description` text,
+  `resources_page_content` text,
   PRIMARY KEY (`id`),
   KEY `index_community_customizations_on_community_id` (`community_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -2437,6 +2438,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20190305112030'),
 ('20190319114719'),
 ('20190319122745'),
-('20190717105844');
+('20190717105844'),
+('20211214101620');
 
 
