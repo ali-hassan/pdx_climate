@@ -67,6 +67,7 @@ class CommunityCustomization < ApplicationRecord
     about_page_content
     terms_page_content
     privacy_page_content
+    resources_page_content
     signup_info_content
     private_community_homepage_content
     verification_to_post_listings_info_content
