@@ -66,25 +66,25 @@
     - if @service.community.follow_in_use?
       = render :partial => "followed_people", :locals => { person: person, followed_people: @service.followed_people, limit: 6 }
 
-    #people-testimonials.listing-main
-      .row
-        %h2.people-header
-          - if @service.received_testimonials?
-            = pluralize(@service.received_testimonials.size, t(".review"), t(".reviews"))
-            = "(#{@service.feedback_positive_percentage.to_s}% #{t("people.show.positive")}, #{@service.received_positive_testimonials.size}/#{@service.received_testimonials.size})"
-          - else
-            = t(".no_reviews")
-        - if @service.received_testimonials?
-          #profile-testimonials-list
-            = render :partial => "testimonials", :locals => {:received_testimonials => @service.received_testimonials, :limit => 3}
-
-      - if @current_user.present? and @service.listings.present?
-        .col-12
-          = icon_tag("chat_bubble", ["icon-with_text icon-styling"])
-          = link_to("Add a Review for #{ @service.person.given_name }", "#", id: "myBtn", class: "review-weight review-font")
-          - @listing = Listing.find_by(id: @service.listings.last.try(:id))
-          .username{ data: { user: @service.person.username } }
-          = render "listings/reviews"
+    -##people-testimonials.listing-main
+    -#  .row
+    -#    %h2.people-header
+    -#      - if @service.received_testimonials?
+    -#        = pluralize(@service.received_testimonials.size, t(".review"), t(".reviews"))
+    -#        = "(#{@service.feedback_positive_percentage.to_s}% #{t("people.show.positive")}, #{@service.received_positive_testimonials.size}/#{@service.received_testimonials.size})"
+    -#      - else
+    -#        = t(".no_reviews")
+    -#    - if @service.received_testimonials?
+    -#      #profile-testimonials-list
+    -#        = render :partial => "testimonials", :locals => {:received_testimonials => @service.received_testimonials, :limit => 3}
+    -#
+    -#  - if @current_user.present? and @service.listings.present?
+    -#    .col-12
+    -#      = icon_tag("chat_bubble", ["icon-with_text icon-styling"])
+    -#      = link_to("Add a Review for #{ @service.person.given_name }", "#", id: "myBtn", class: "review-weight review-font")
+    -#      - @listing = Listing.find_by(id: @service.listings.last.try(:id))
+    -#      .username{ data: { user: @service.person.username } }
+    -#      = render "listings/reviews"
 
   .col-4
     .row
