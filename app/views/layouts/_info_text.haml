@@ -3,8 +3,9 @@
     = icon_tag("information")
   .info-text-content
     %p= text
-.info-text-container
-  .info-text-icon
-    = icon_tag("information")
-  .info-text-content
-    %p= "Please limit images to 7MB or less. Much smaller images load faster."
+- if is_size
+  .info-text-container
+    .info-text-icon
+      = icon_tag("information")
+    .info-text-content
+      %p= "Please limit images to 7MB or less. Much smaller images load faster."
