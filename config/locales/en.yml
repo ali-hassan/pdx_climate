@@ -2002,6 +2002,7 @@ en:
       images:
         image: "Image(s): The first will be featured, so make it a great one!"
         best_result: "For best results, use JPG, GIF or PNG images that are %{width} by %{height} pixels."
+        max_size: "Please limit images to 7MB or less. Much smaller images load faster."
         no_file_selected: "No file selected"
         remove_image: "Remove image"
         select_file: "Select file"
