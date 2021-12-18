@@ -20,10 +20,10 @@
               = t("admin.payment_preferences.you_can_use_stripe_or_paypal", choose_link: popup_link).html_safe
               - learn_more = link_to(t('layouts.branding.learn_more'), ' https://help.sharetribe.com/how-to-delay-payments-and-hold-funds-with-stripe')
               - help_text = t('admin.communities.settings.automatically_confirmed_no_escrow_stripe_info', learn_more: learn_more).html_safe
-              = render partial: 'layouts/info_text', locals: { text: help_text }
+              = render partial: 'layouts/info_text', locals: { text: help_text, is_size: false }
 
               - help_text = t('admin.communities.settings.buyer_transaction_fees_are_only_supported_with_stripe')
-              = render partial: 'layouts/info_text', locals: { text: help_text }
+              = render partial: 'layouts/info_text', locals: { text: help_text, is_size: false }
 
               = render layout: "layouts/lightbox", locals: { id: "payment_choose_popup_content"} do
                 - text_with_line_breaks_html_safe do
@@ -43,7 +43,7 @@
               = t("admin.payment_preferences.you_can_use_stripe_only", read_more_link: stripe_kb_link).html_safe
               - learn_more = link_to(t('layouts.branding.learn_more'), ' https://help.sharetribe.com/how-to-delay-payments-and-hold-funds-with-stripe')
               - help_text = t('admin.communities.settings.automatically_confirmed_no_escrow_stripe_info', learn_more: learn_more).html_safe
-              = render partial: 'layouts/info_text', locals: { text: help_text }
+              = render partial: 'layouts/info_text', locals: { text: help_text, is_size: false }
             - else
               - support_link = link_to t("admin.payment_preferences.contact_support"), "mailto:#{support_email}"
               - help_link = link_to t("admin.payment_preferences.no_payments_link_text"), "#{knowledge_base_url}/supported-payments-currencies"

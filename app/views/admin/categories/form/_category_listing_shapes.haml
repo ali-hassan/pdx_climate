@@ -9,7 +9,7 @@
         |
         %a.deselect-all{href: "#"}
           = t("admin.categories.form.category_transaction_types.clear_all")
-  = render :partial => "layouts/info_text", :locals => { :text => t("admin.categories.form.category_transaction_types.transaction_types_description") }
+  = render :partial => "layouts/info_text", :locals => { :text => t("admin.categories.form.category_transaction_types.transaction_types_description"), is_size: false }
   .row
     .col-12
       #category-listing-shapes-container.clearfix

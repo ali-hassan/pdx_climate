@@ -73,7 +73,7 @@
             - if @presenter.stripe_available?
               - learn_more = link_to(t('layouts.branding.learn_more'), ' https://help.sharetribe.com/how-to-delay-payments-and-hold-funds-with-stripe')
               - help_text = t('admin.communities.settings.automatically_confirmed_no_escrow_stripe_info', learn_more: learn_more).html_safe
-              = render partial: 'layouts/info_text', locals: { text: help_text }
+              = render partial: 'layouts/info_text', locals: { text: help_text, is_size: false }
               .info-text-container
 
     .row

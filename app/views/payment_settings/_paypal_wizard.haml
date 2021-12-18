@@ -78,18 +78,18 @@
               = render :partial => "layouts/info_text", :locals => {text: t("paypal_accounts.new.paypal_account_billing_agreement_info_both",
                 commission_from_seller: presenter.commission_from_seller,
                 minimum_commission: MoneyViewUtils.to_humanized(presenter.minimum_commission),
-                paypal_info_link: paypal_info_link).html_safe }
+                paypal_info_link: paypal_info_link).html_safe, is_size: false }
             - elsif presenter.commission_type == :relative
               = render :partial => "layouts/info_text", :locals => {text: t("paypal_accounts.new.paypal_account_billing_agreement_info_relative",
                 commission_from_seller: presenter.commission_from_seller,
-                paypal_info_link: paypal_info_link).html_safe }
+                paypal_info_link: paypal_info_link).html_safe, is_size: false }
             - elsif presenter.commission_type == :fixed
               = render :partial => "layouts/info_text", :locals => {text: t("paypal_accounts.new.paypal_account_billing_agreement_info_fixed",
                 minimum_commission: MoneyViewUtils.to_humanized(presenter.minimum_commission),
-                paypal_info_link: paypal_info_link).html_safe }
+                paypal_info_link: paypal_info_link).html_safe, is_size: false }
             - else # no commission fee
               = render :partial => "layouts/info_text", :locals => {text: t("paypal_accounts.new.paypal_account_billing_agreement_info_none",
-                paypal_info_link: paypal_info_link).html_safe }
+                paypal_info_link: paypal_info_link).html_safe, is_size: false }
         .row.send-button-wrapper.without-margin
           .col-12
             %button.send_button#ask_billing_agreement

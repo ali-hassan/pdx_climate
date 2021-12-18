@@ -17,7 +17,7 @@
     %h3
       = t(".listing_fields")
 
-    = render :partial => "layouts/info_text", :locals => { :text => t(".listing_fields_help")}
+    = render :partial => "layouts/info_text", :locals => { :text => t(".listing_fields_help"), is_size: false}
 
     - show_custom_fields = !@custom_fields.empty?
 

@@ -2,7 +2,7 @@
 .translation-wrapper
   .input-header
     = header
-  = render :partial => "layouts/info_text", :locals => { :text => info_text.html_safe }
+  = render :partial => "layouts/info_text", :locals => { :text => info_text.html_safe, is_size: false }
   - translations.each do |language_key, value|
     .row
       - if translations.size > 1

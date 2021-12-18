@@ -7,13 +7,13 @@
           = form.check_box :search_filter, checked: false, disabled: true
           = form.label :search_filter, t("admin.custom_fields.form.search_filter.search_filter"), class: "disabled"
 
-          = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.form.search_filter.date_cant_be_filtered") }
+          = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.form.search_filter.date_cant_be_filtered"), is_size: false }
 
         - when :text
           = form.check_box :search_filter, checked: false, disabled: true
           = form.label :search_filter, t("admin.custom_fields.form.search_filter.search_filter"), class: "disabled"
 
-          = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.form.search_filter.text_cant_be_filtered") }
+          = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.form.search_filter.text_cant_be_filtered"), is_size: false }
 
         - else
           = form.check_box :search_filter

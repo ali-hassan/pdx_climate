@@ -22,7 +22,7 @@
     .edit-community-details-field
       .edit-community-details-field-title
         = t("admin.communities.edit_details.private_community_homepage_content")
-      = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.edit_private_community_homepage_content_description", :see_how_it_looks_like => link_to(t("admin.communities.edit_details.see_how_it_looks_like"), "/?big_cover_photo=true")).html_safe }
+      = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.edit_private_community_homepage_content_description", :see_how_it_looks_like => link_to(t("admin.communities.edit_details.see_how_it_looks_like"), "/?big_cover_photo=true")).html_safe, is_size: false }
       #private_community_homepage_content{:data => {:mercury => "full"}}
         - if @community_customization && @community_customization.private_community_homepage_content
           = @community_customization.private_community_homepage_content.html_safe
@@ -31,7 +31,7 @@
     .edit-community-details-field
       .edit-community-details-field-title
         = t("admin.communities.edit_details.verification_to_post_listings_info_content")
-      = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.verification_to_post_listings_info_content_description") }
+      = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.verification_to_post_listings_info_content_description"), is_size: false }
       #verification_to_post_listings_info_content{:data => {:mercury => "full"}}
         - if @community_customization && @community_customization.verification_to_post_listings_info_content
           = @community_customization.verification_to_post_listings_info_content.html_safe
@@ -41,7 +41,7 @@
   .edit-community-details-field
     .edit-community-details-field-title
       = t("admin.communities.edit_details.edit_signup_info")
-    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.edit_signup_info_description") }
+    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.edit_signup_info_description"), is_size: false }
 
     #signup_info_content{:data => {:mercury => "full"}}
       - if @community_customization && @community_customization.signup_info_content

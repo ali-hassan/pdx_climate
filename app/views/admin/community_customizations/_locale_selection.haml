@@ -13,7 +13,7 @@
           ST.updateLocales(value);
           $('#edit_community').valid();
         });
-    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.enabled_languages_description") }
+    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.edit_details.enabled_languages_description"), is_size: false }
     .row
       .col-10
         %select.locale-selection__input-widget.required{ multiple: true, name: "enabled_locales[]", id: "locale-selection" }
@@ -27,4 +27,4 @@
   - else
     .row
       .col-10
-        = render :partial => "layouts/info_text", :locals => { :text => t('admin.communities.edit_details.language_selection_disabled', languages: unofficial_locales.map{|locale| locale[:name]}.join(', ') ) }
+        = render :partial => "layouts/info_text", :locals => { :text => t('admin.communities.edit_details.language_selection_disabled', languages: unofficial_locales.map{|locale| locale[:name]}.join(', ') ), is_size: false }

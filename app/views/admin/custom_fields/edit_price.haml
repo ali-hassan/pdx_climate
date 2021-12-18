@@ -32,6 +32,6 @@
 
     .row
       .col-12
-        = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.edit_price.description") }
+        = render :partial => "layouts/info_text", :locals => { :text => t("admin.custom_fields.edit_price.description"), is_size: false }
 
     = render :partial => "admin/custom_fields/form/buttons", :locals => { :form => form }

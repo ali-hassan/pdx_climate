@@ -25,4 +25,4 @@
   - else
     .row
       .col-10
-        = render :partial => "layouts/info_text", :locals => { :text => t('admin.communities.edit_details.language_selection_disabled', languages: unofficial_locales.map{|locale| locale[:name]}.join(', ') ) }
+        = render :partial => "layouts/info_text", :locals => { :text => t('admin.communities.edit_details.language_selection_disabled', languages: unofficial_locales.map{|locale| locale[:name]}.join(', ') ), is_size: false }

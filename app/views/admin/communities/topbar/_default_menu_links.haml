@@ -6,7 +6,7 @@
 - info_text = t("admin.communities.default_menu_links.info", about_link: about_link, contact_link: contact_link, invite_link: invite_link).html_safe
 .row
   .col-12
-    = render :partial => "layouts/info_text", :locals => { :text => info_text }
+    = render :partial => "layouts/info_text", :locals => { :text => info_text, is_size: false }
 = fields_for :configuration, @current_community.configuration do |config_fields|
   .row
     .col-12

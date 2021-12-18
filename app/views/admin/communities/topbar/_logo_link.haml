@@ -1,7 +1,7 @@
 %h3= t("admin.communities.logo_link.title")
 .row
   .col-12
-    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.logo_link.info") }
+    = render :partial => "layouts/info_text", :locals => { :text => t("admin.communities.logo_link.info"), is_size: false }
   .row
     .col-5
       = label_tag :logo_link, t("admin.communities.logo_link.url")

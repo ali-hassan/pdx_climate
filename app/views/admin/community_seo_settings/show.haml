@@ -18,9 +18,9 @@
       %h3= t('admin.communities.seo_settings.meta_title_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.meta_title_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:homepage_title)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:homepage_title)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_title_info', link: "", vars: @seo_service.i18n_variables(:homepage_title)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_title_info', link: "", vars: @seo_service.i18n_variables(:homepage_title)), is_size: false }
 
 
       .translation-wrapper
@@ -39,9 +39,9 @@
       %h3= t('admin.communities.seo_settings.meta_description_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.meta_description_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:homepage_description)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:homepage_description)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_description_info', link: "", vars: @seo_service.i18n_variables(:homepage_description)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.meta_description_info', link: "", vars: @seo_service.i18n_variables(:homepage_description)), is_size: false }
 
       .translation-wrapper
         - sorted_customizations.each do |customization, language, locale|
@@ -61,9 +61,9 @@
       %h3= t('admin.communities.seo_settings.search_meta_title_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.search_meta_title_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:search_meta_title)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:search_meta_title)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_title_info', link: "", vars: @seo_service.i18n_variables(:search_meta_title)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_title_info', link: "", vars: @seo_service.i18n_variables(:search_meta_title)), is_size: false }
 
 
       .translation-wrapper
@@ -82,9 +82,9 @@
       %h3= t('admin.communities.seo_settings.search_meta_description_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.search_meta_description_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:search_meta_description)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:search_meta_description)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_description_info', link: "", vars: @seo_service.i18n_variables(:search_meta_description)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.search_meta_description_info', link: "", vars: @seo_service.i18n_variables(:search_meta_description)), is_size: false }
 
       .translation-wrapper
         - sorted_customizations.each do |customization, language, locale|
@@ -104,9 +104,9 @@
       %h3= t('admin.communities.seo_settings.listing_meta_title_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.listing_meta_title_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:listing_meta_title)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:listing_meta_title)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_title_info', link: "", vars: @seo_service.i18n_variables(:listing_meta_title)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_title_info', link: "", vars: @seo_service.i18n_variables(:listing_meta_title)), is_size: false }
 
 
       .translation-wrapper
@@ -125,9 +125,9 @@
       %h3= t('admin.communities.seo_settings.listing_meta_description_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.listing_meta_description_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:listing_meta_description)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:listing_meta_description)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_description_info', link: "", vars: @seo_service.i18n_variables(:listing_meta_description)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.listing_meta_description_info', link: "", vars: @seo_service.i18n_variables(:listing_meta_description)), is_size: false }
 
       .translation-wrapper
         - sorted_customizations.each do |customization, language, locale|
@@ -147,9 +147,9 @@
       %h3= t('admin.communities.seo_settings.category_meta_title_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.category_meta_title_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:category_meta_title)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:category_meta_title)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_title_info', link: "", vars: @seo_service.i18n_variables(:category_meta_title)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_title_info', link: "", vars: @seo_service.i18n_variables(:category_meta_title)), is_size: false }
 
 
       .translation-wrapper
@@ -168,9 +168,9 @@
       %h3= t('admin.communities.seo_settings.category_meta_description_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.category_meta_description_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:category_meta_description)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:category_meta_description)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_description_info', link: "", vars: @seo_service.i18n_variables(:category_meta_description)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.category_meta_description_info', link: "", vars: @seo_service.i18n_variables(:category_meta_description)), is_size: false }
 
       .translation-wrapper
         - sorted_customizations.each do |customization, language, locale|
@@ -190,9 +190,9 @@
       %h3= t('admin.communities.seo_settings.profile_meta_title_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.profile_meta_title_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:profile_meta_title)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_title_info', link: meta_info_link, vars: @seo_service.i18n_variables(:profile_meta_title)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_title_info', link: "", vars: @seo_service.i18n_variables(:profile_meta_title)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_title_info', link: "", vars: @seo_service.i18n_variables(:profile_meta_title)), is_size: false }
 
 
       .translation-wrapper
@@ -211,9 +211,9 @@
       %h3= t('admin.communities.seo_settings.profile_meta_description_label')
       - if APP_CONFIG.display_knowledge_base_articles
         - meta_info_link = link_to t('admin.communities.seo_settings.profile_meta_description_link_text'), "#{APP_CONFIG.knowledge_base_url}/how-to-customize-meta-tags-for-seo-purposes", target: '_blank'
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:profile_meta_description)).html_safe }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_description_info', link: meta_info_link, vars: @seo_service.i18n_variables(:profile_meta_description)).html_safe, is_size: false }
       - else
-        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_description_info', link: "", vars: @seo_service.i18n_variables(:profile_meta_description)) }
+        = render partial: 'layouts/info_text', locals: { text: t('admin.communities.seo_settings.profile_meta_description_info', link: "", vars: @seo_service.i18n_variables(:profile_meta_description)), is_size: false }
 
       .translation-wrapper
         - sorted_customizations.each do |customization, language, locale|

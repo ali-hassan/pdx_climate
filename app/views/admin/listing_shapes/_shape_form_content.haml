@@ -63,7 +63,7 @@
       = label_tag("", t("admin.listing_shapes.availability_title"), class: "input")
 
       - if display_knowledge_base_articles
-        = render :partial => "layouts/info_text", :locals => { :text => link_to(t("admin.listing_shapes.read_more_availability_management"), "#{knowledge_base_url}/knowledge-base/how-availability-management-works").html_safe }
+        = render :partial => "layouts/info_text", :locals => { :text => link_to(t("admin.listing_shapes.read_more_availability_management"), "#{knowledge_base_url}/knowledge-base/how-availability-management-works").html_safe, is_size: false }
 
   .row
     .col-12
@@ -91,11 +91,11 @@
     = label_tag("units_title", t("admin.listing_shapes.units_title"), class: "input")
 
     .js-pricing-units-info.hidden
-      = render partial: "layouts/info_text", locals: {text: t("admin.listing_shapes.units_desc")}
+      = render partial: "layouts/info_text", locals: {text: t("admin.listing_shapes.units_desc"), is_size: false}
 
     - if harmony_in_use
       .js-pricing-units-disabled-info.hidden
-        = render partial: "layouts/info_text", locals: {text: t("admin.listing_shapes.pricing_units_disabled_info")}
+        = render partial: "layouts/info_text", locals: {text: t("admin.listing_shapes.pricing_units_disabled_info"), is_size: false}
 
 - shape[:predefined_units].map do |unit|
   .row
