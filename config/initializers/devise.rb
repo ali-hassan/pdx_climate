@@ -254,7 +254,7 @@ Devise.setup do |config|
   # This will configure a setup phase hook, that will use SessionsController#facebook_setup as callback
   # It allows dynamic configuring on community basis
   facebook_api_version = FacebookSdkVersion::SERVER
-  config.omniauth :google_oauth2, APP_CONFIG.google_client_id, APP_CONFIG.google_client_secret, { skip_jwt: true }
+  config.omniauth :google_oauth2, APP_CONFIG.google_client_id, APP_CONFIG.google_client_secret, {  }
   
 
   config.omniauth :facebook,
@@ -264,8 +264,8 @@ Devise.setup do |config|
                     authorize_url: "https://www.facebook.com/#{facebook_api_version}/dialog/oauth"
                   }
 
-  # config.omniauth :google_oauth2, setup: true
-  config.omniauth :google_oauth2, setup: Person::OmniauthService::SetupPhase
+  config.omniauth :google_oauth2, setup: true
+  #config.omniauth :google_oauth2, setup: Person::OmniauthService::SetupPhase
   config.omniauth :linkedin, setup: Person::OmniauthService::SetupPhase
 
   # ==> Warden configuration
