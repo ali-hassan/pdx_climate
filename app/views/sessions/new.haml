@@ -40,6 +40,7 @@
     %br/
   - if facebook_connect_in_use?
     = render :partial => "layouts/facebook_connect_button", :locals => { :button_text => t(".log_in_with_your_facebook_account") }
+  - if google_connect_in_use?
     = render :partial => "layouts/google_connect_button", :locals => { :button_text => t(".log_in_with_your_google_account") }
     %p= t(".or_sign_up_with_your_username")
   = form_tag("#{APP_CONFIG.login_domain}#{sessions_path}",:action => "create") do

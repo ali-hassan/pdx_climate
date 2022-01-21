@@ -8,7 +8,7 @@ module SocialNetworkHelper
   end
 
   def google_connect_in_use?
-    true
+    @current_community&.google_connect_enabled
     #@current_community&.google_connect_enabled? && @current_community&.google_connect_id
   end
 
