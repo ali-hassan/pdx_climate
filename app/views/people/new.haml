@@ -15,7 +15,6 @@
             :community_name => @current_community.name(I18n.locale),
             :allowed_emails => @current_community.allowed_emails,
             :count => (@current_community.allowed_emails.split(",").count))
-
   - unless !facebook_connect_in_use? || params[:no_fb]
     = render :partial => "layouts/facebook_connect_button", :locals => { :button_text => t(".create_account_with_facebook") }
   - - if google_connect_in_use?
@@ -91,13 +90,10 @@
               privacy: link_to(t(".privacy"), "#", :tabindex => "-1", :id => "privacy_link", :class => "form"),)
 
     = form.hidden_field :consent, :value => @current_community.consent
-
     .outer-checkbox-container
       .checkbox-container
         %input{:type => "checkbox", :id => "person_admin_emails_consent", :name => "person[admin_emails_consent]"}
         = form.label :admin_emails_consent, t('.admin_emails_consent'), :class => 'checkbox'
-
-
     = button_tag t('.create_new_account')
 
 = render :partial => "help_texts", :collection => ["terms", "help_invitation_code", "privacy"], :as => :field
