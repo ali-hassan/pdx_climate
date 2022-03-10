@@ -8,4 +8,4 @@
       - if current_user?(person) && params[:show_closed]
         = link_to t("people.show.show_all_listings"), "#", :data => { :url => person_listings_url(person, :show_closed => true) }
       - else
-        = link_to t("people.show.show_all_open_listings"), "#", :data => { :url =>  listings_person_settings_url(person.username) }
+        = link_to t("people.show.show_all_open_listings"), "#", :data => { :url =>  person_listings_url(person) }
