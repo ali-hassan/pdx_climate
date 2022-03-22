@@ -1,5 +1,5 @@
 set :stage, :production
-set :branch, "master"
+ask :branch, "master"
 
 server 'ubuntu@54.191.121.195', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
@@ -17,8 +17,3 @@ set :puma_env, "production"
 set :puma_config_file, "#{shared_path}/config/puma.rb"
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
-
-## Run this command if you got any server access issue while deploying
-#
-#
-# ssh-add -K ~/.ssh/id_rsa
