@@ -186,7 +186,7 @@ gem 'daemons'
 group :deployment do
   gem "capistrano", "=3.11"
   gem 'capistrano3-delayed-job', '~> 1.0'
-  # gem 'capistrano-ssh-doctor', '~> 1.0'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'capistrano-rvm'
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
