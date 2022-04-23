@@ -108,18 +108,18 @@ ENTRYPOINT ["script/entrypoint.sh"]
 #
 
 # Fix ownership of directories that need to be writable
-USER root
-RUN mkdir -p \
-          app/assets/webpack \
-          public/assets \
-          public/webpack \
-    && chown -R app:app \
-       app/assets/javascripts \
-       app/assets/webpack \
-       client/app/ \
-       public/assets \
-       public/webpack
-USER app
+#USER root
+#RUN mkdir -p \
+#          app/assets/webpack \
+#          public/assets \
+#          public/webpack \
+#    && chown -R app:app \
+#       app/assets/javascripts \
+#       app/assets/webpack \
+#       client/app/ \
+#       public/assets \
+#       public/webpack
+#USER app
 
 # If assets.tar.gz file exists in project root
 # assets will be extracted from there.
