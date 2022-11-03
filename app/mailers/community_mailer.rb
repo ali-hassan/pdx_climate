@@ -46,6 +46,7 @@ class CommunityMailer < ActionMailer::Base
     @current_community = community
     @recipient = recipient
     @listings = listings
+    attachments.inline['header'] = @community.wide_logo
 
     unless @recipient.member_of?(@community)
       logger.info "Trying to send community updates to a person who is not member of the given community. Skipping."
