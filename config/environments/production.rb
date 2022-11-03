@@ -144,6 +144,8 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :log
+  config.action_controller.asset_host = 'https://orclimatehub.org'
+  config.action_mailer.asset_host = config.action_controller.asset_host
 
   # We don't need schema dumps in this environment
   config.active_record.dump_schema_after_migration = false
