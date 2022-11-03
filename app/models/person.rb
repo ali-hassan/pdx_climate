@@ -269,7 +269,7 @@ class Person < ApplicationRecord
 
   def last_community_updates_at
     DEFAULT_TIME_FOR_COMMUNITY_UPDATES.ago
-    #community_updates_last_sent_at || 
+    #community_updates_last_sent_at ||
   end
 
   def self.username_blacklist
