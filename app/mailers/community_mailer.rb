@@ -24,13 +24,14 @@ class CommunityMailer < ActionMailer::Base
 
       begin
         token = AuthToken.create_unsubscribe_token(person_id: person.id).token
+        #        MailCarrier.deliver_now(CommunityMailer.community_updates(recipient: person, community: community, listings: listings_to_send, unsubscribe_token: token))
         MailCarrier.deliver_now(
           CommunityMailer.community_updates(
-          recipient: person,
-          community: community,
-          listings: listings_to_send,
-          unsubscribe_token: token
-        ))
+            recipient: person,
+            community: community,
+            listings: listings_to_send,
+            unsubscribe_token: token
+          ))
       rescue StandardError => e
         # Catch the exception and continue sending emails
         puts "Error sending mail to #{person.confirmed_notification_emails} community updates: #{e.message}"
@@ -38,6 +39,7 @@ class CommunityMailer < ActionMailer::Base
       end
       # After sending updates for all communities that had something new, update the time of last sent updates to Time.now.
       person.update_attribute(:community_updates_last_sent_at, Time.now)
+      puts "I am here"
     end
   end
 

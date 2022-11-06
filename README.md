@@ -69,7 +69,7 @@ Before you get started, the following needs to be installed:
     ```bash
     git clone git://github.com/sharetribe/sharetribe.git
     cd sharetribe
-    git checkout master
+    git checkout latest
     ```
 
 1.  Install the required gems by running the following command in the project root directory:
