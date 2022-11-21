@@ -78,6 +78,13 @@
             :custom_field_value => custom_field_value,
             :prefix => prefix
       .inline-label-container
+    .outer-checkbox-container
+      .checkbox-container
+        - unless @skip_terms_checkbox
+          %input{:type => "checkbox", :id => "person_terms", :name => "person[terms]"}
+          = form.label :terms, :class => "checkbox" do
+            = raw t('.site_agreement',
+              terms: link_to(t(".agreement"), about_infos_path, :tabindex => "-1", :id => "terms_link", :class => "form"),)
 
     -# Terms
     .outer-checkbox-container
