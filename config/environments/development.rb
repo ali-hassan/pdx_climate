@@ -83,9 +83,9 @@ Rails.application.configure do
     ActionMailer::Base.delivery_method = :sendmail
   elsif APP_CONFIG.mail_delivery_method == "smtp"
     # Enable sending mail from localhost
-    config.action_mailer.asset_host = 'https://orclimatehub.org'
-    config.action_mailer.default_url_options = {host: 'https://orclimatehub.org'}
-    config.action_controller.asset_host = 'https://orclimatehub.org'
+    config.action_mailer.asset_host = 'https://www.orclimatehub.org'
+    config.action_mailer.default_url_options = {host: 'https://www.orclimatehub.org'}
+    config.action_controller.asset_host = 'https://www.orclimatehub.org'
     ActionMailer::Base.smtp_settings = {
       :address              => APP_CONFIG.smtp_email_address,
       :port                 => APP_CONFIG.smtp_email_port,
