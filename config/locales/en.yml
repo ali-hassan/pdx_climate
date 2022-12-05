@@ -2370,6 +2370,7 @@ en:
       terms: "Terms of Use"
       agreement: "Site Agreements"
       site_agreement_txt: "Site Agreements"
+      site_agreement_t1: "Site Agreements needed"
       privacy: "Privacy Policy"
       username_is_in_use: "This username is already in use."
       username_is_invalid: "Username is invalid. Allowed characters are letters, numbers and underscore."
