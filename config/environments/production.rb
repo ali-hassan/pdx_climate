@@ -146,7 +146,7 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true # the "deliver_*" methods are available
 
   # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :log
+  #config.active_support.deprecation = :log
 
   # We don't need schema dumps in this environment
   config.active_record.dump_schema_after_migration = false
