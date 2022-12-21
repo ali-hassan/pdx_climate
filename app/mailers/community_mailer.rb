@@ -24,7 +24,7 @@ class CommunityMailer < ActionMailer::Base
 
       begin
         token = AuthToken.create_unsubscribe_token(person_id: person.id).token
-        # Weekly email newsletter.
+        # Weekly email newsletter
         #MailCarrier.deliver_now(CommunityMailer.community_updates(recipient: person, community: community, listings: listings_to_send, unsubscribe_token: token))
         MailCarrier.deliver_now(
           CommunityMailer.community_updates(
