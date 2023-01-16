@@ -44,6 +44,38 @@ class CommunityMailer < ActionMailer::Base
     end
   end
 
+  def deliver_community_updates
+    Person.find_each do |person|
+      next unless person.should_receive_community_updates_now?
+
+      community = person.accepted_community
+      next unless community
+
+      listings_to_send = community.get_new_listings_to_update_email(person) if community.automatic_newsletters
+      next if listings_to_send.blank?
+
+      begin
+        token = AuthToken.create_unsubscribe_token(person_id: person.id).token
+        # Weekly email newsletter
+        #MailCarrier.deliver_now(CommunityMailer.community_updates(recipient: person, community: community, listings: listings_to_send, unsubscribe_token: token))
+        MailCarrier.deliver_now(
+          CommunityMailer.community_updates(
+            recipient: person,
+            community: community,
+            listings: listings_to_send,
+            unsubscribe_token: token
+          ))
+      rescue StandardError => e
+        # Catch the exception and continue sending emails
+        puts "Error sending mail to #{person.confirmed_notification_emails} community updates: #{e.message}"
+        ApplicationHelper.send_error_notification("Error sending mail to #{person.confirmed_notification_emails} community updates: #{e.message}", e.class)
+      end
+      # After sending updates for all communities that had something new, update the time of last sent updates to Time.now.
+      person.update_attribute(:community_updates_last_sent_at, Time.now)
+      puts "I am here"
+    end
+  end
+
   def community_updates(recipient:, community:, listings:, unsubscribe_token:)
     @community = community
     @current_community = community
@@ -97,3 +129,8 @@ class CommunityMailer < ActionMailer::Base
     premailer(mail(opts, &block))
   end
 end
+
+# {"tag":"action_mailer","free":"Delivering email","type":"delivering_email","structured":{"to":["rick@shareoregon.com"],"from":["orclimatehub@gmail.com"],"subject":"Oregon Climate Action Hub update"}}
+# Sent mail to rick@shareoregon.com (7559.2ms)
+# Error sending mail to #<Email::ActiveRecord_AssociationRelation:0x000055ea4c57efe0> community updates: 550 The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements
+# Net::SMTPFatalError: Error sending mail to #<Email::ActiveRecord_AssociationRelation:0x000055ea4c583bd0> community updates: 550 The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements
