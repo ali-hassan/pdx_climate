@@ -56,11 +56,12 @@ module PaypalService
     end
 
     def build_paypal_accounts
-      PaypalService::API::Accounts.new(
-        PaypalService::PermissionsInjector.build_paypal_permissions,
-        PaypalService::MerchantInjector.build_paypal_merchant,
-        PaypalService::OnboardingInjector.build_paypal_onboarding,
-        prepend_country_code: true)
+      nil
+      # PaypalService::API::Accounts.new(
+      #   PaypalService::PermissionsInjector.build_paypal_permissions,
+      #   PaypalService::MerchantInjector.build_paypal_merchant,
+      #   PaypalService::OnboardingInjector.build_paypal_onboarding,
+      #   prepend_country_code: true)
     end
   end
 end
