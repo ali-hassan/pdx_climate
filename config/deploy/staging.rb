@@ -1,5 +1,5 @@
 set :stage, :production
-ask :branch, "master"
+set :branch, "telemart-uae"
 
 server 'ubuntu@13.213.119.74', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
