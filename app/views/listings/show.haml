@@ -183,12 +183,12 @@
               %iframe{width: "600", height: "550", frameborder: "0",
                     src: "https://www.google.com/maps/embed/v1/place?key=#{maps_key}&q=#{CGI.escape(@listing.location.address)}&language=#{I18n.locale}"}
 
-      .row
-        .col-12
-          - unless @near_by_listings.empty?
-            .row
-              %h5 Things to Do Nearby:
-            .row
-              .col-12
+      -#.row
+      -#  .col-12
+        -#  - unless @near_by_listings.empty?
+        -#    .row
+        -#      %h5 Things to Do Nearby:
+        -#    .row
+        -#      .col-12
                 =# render :partial => "listings/near_by_listings_grid", :locals => { person: @person, limit: @per_page, listings:  @near_by_listings.delete_if { |list| list.id == @listing.id } }
           = render :partial => "origin", :locals => { :origin_loc => @listing.origin_loc }
