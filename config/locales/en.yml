@@ -65,7 +65,7 @@ en:
         enabled_languages: "Enabled Languages"
         enabled_languages_description: "The set of languages available for users. The first one is used as default."
         default_language: "Default language"
-        language_selection_disabled: "Language selection is disabled for your website because you are using following unofficial languages: %{languages}. Please contact Oregon Climate Action Hub support if you want to modify your language settings."
+        language_selection_disabled: "Language selection is disabled for your website because you are using following unofficial languages: %{languages}. Please contact TelemartUAE support if you want to modify your language settings."
         community_name: "Website Name"
         edit_community_name_description: "The name of your website. This is shown to users in emails and various other places."
         community_slogan: "Tagline"
@@ -140,7 +140,7 @@ en:
         first_name_only: "First name only (First)"
         invalid_color_code: "Color code should contain 6 numbers or letters A-F, for example D96E21"
         custom_head_script: "Custom script"
-        custom_head_script_instructions_text: "This script is injected inside the <head> tag of every page and can be used to insert custom CSS, JavaScript or HTML. Please note that future changes to Oregon Climate Action Hub may render your script incompatible."
+        custom_head_script_instructions_text: "This script is injected inside the <head> tag of every page and can be used to insert custom CSS, JavaScript or HTML. Please note that future changes to TelemartUAE may render your script incompatible."
         current_image: "Current image:"
       edit_text_instructions:
         edit_text_instructions: "Instruction texts"
@@ -151,12 +151,12 @@ en:
         send_test_message: "Send test message"
       outgoing_email:
         title: "Outgoing email address"
-        info: "This name and address is used for emails sent from Oregon Climate Action Hub to members."
+        info: "This name and address is used for emails sent from TelemartUAE to members."
         read_more: "Read more about outgoing email address"
         sender_address: "Sender address: %{sender_address}"
         sender_address_default: "Sender address: not set (using default address %{sender_address})"
         need_to_change: "If you need to change the email address, please %{contact_support_link}."
-        contact_support_link_text: "contact Oregon Climate Action Hub support"
+        contact_support_link_text: "contact TelemartUAE support"
         set_sender_address: "Set sender address"
         sender_name_label: Name
         sender_name_placeholder: "Sender name"
@@ -222,7 +222,7 @@ en:
         access: "Access preferences"
         join_with_invite_only: "Allow users to join only with an invite from another user"
         users_can_invite_new_users: "Allow all users to invite new users"
-        private: "Allow only registered users to see posts and user profiles (make Oregon Climate Action Hub private)."
+        private: "Allow only registered users to see posts and user profiles (make TelemartUAE private)."
         require_verification_to_post_listings: "Allow only users verified by admin to add new posts."
         allow_free_conversations: "Allow users to message each others freely"
         search_preferences: "Search preferences"
@@ -252,12 +252,12 @@ en:
         automatic_newsletter_frequency: "Send automatic newsletter: %{frequency_dropdown}"
         newsletter_daily: Daily
         newsletter_weekly: Weekly
-        delete_marketplace_title: "Delete Oregon Climate Action Hub"
-        type_marketplace_domain: "Type the Oregon Climate Action Hub domain (%{domain}) to the text field below:"
-        type_marketplace_domain_placeholder: "Type the Oregon Climate Action Hub domain here."
-        once_you_delete: "Once you delete Oregon Climate Action Hub, you will not be able to access it anymore. Be careful."
+        delete_marketplace_title: "Delete TelemartUAE"
+        type_marketplace_domain: "Type the TelemartUAE domain (%{domain}) to the text field below:"
+        type_marketplace_domain_placeholder: "Type the TelemartUAE domain here."
+        once_you_delete: "Once you delete TelemartUAE, you will not be able to access it anymore. Be careful."
         are_you_sure: "Are you sure?"
-        i_understand_button: "I understand that by clicking this button, Oregon Climate Action Hub will be deleted."
+        i_understand_button: "I understand that by clicking this button, TelemartUAE will be deleted."
         last_community_updates: "Please note that after deletion, you and your website users may still receive the last website update emails."
         you_will_be_redirected_to: "After you have deleted your website you will be redirected to %{destination}. You will not be able to access your website anymore."
         delete_this_marketplace: "Delete this website"
@@ -276,7 +276,7 @@ en:
         save_user_status_successful: Saved
         export_all_as_csv: "Export all as CSV"
         save_user_status_error: "Saving failed. Please refresh the page and try again."
-        ban_user_confirmation: "This removes the user from the Oregon Climate Action Hub and prevents them from accessing the site again with this account. Are you sure you want to proceed?"
+        ban_user_confirmation: "This removes the user from the TelemartUAE and prevents them from accessing the site again with this account. Are you sure you want to proceed?"
         unban_user_confirmation: "This unbans the user in the website and allows them to access the site again with this account. Are you sure you want to proceed?"
         ban_me_error: "You cannot ban yourself."
         search: Search
@@ -304,7 +304,7 @@ en:
       new_layout:
         new_layout: "New layout"
         description_roadmap: "We are in the process of rolling out a new and improved layout. During the transition period, you can select which parts should continue using the old layout using the menu below. New features will only be available on the new layout."
-        description_process: "Support for the old layout will be removed in the future. The Oregon Climate Action Hub team will notify you before this happens. Questions? Contact the team via %{support_link}."
+        description_process: "Support for the old layout will be removed in the future. The TelemartUAE team will notify you before this happens. Questions? Contact the team via %{support_link}."
         description_roadmap_new: "When new layout components are made available for your website, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
         enabled_for_you: "Enabled for you"
         enabled_for_all: "Enabled for all"
@@ -405,10 +405,10 @@ en:
         google_analytics_key_info_text: "Tracking ID of your Google Analytics account."
         google_analytics_key_info_text_with_instructions: "Tracking ID of your Google Analytics account. %{instructions_link}."
         google_analytics_instructions_link_text: "Read more about connecting Google Analytics"
-        sharetribe_analytics: "Oregon Climate Action Hub analytics"
-        sharetribe_analytics_info_text_with_instructions: "To improve Oregon Climate Action Hub's services and support, Oregon Climate Action Hub tracks website members activity. Personal data is not collected and this information is not shared outside the Oregon Climate Action Hub team. This tracking can be disabled entirely. %{instructions_link}"
-        sharetribe_analytics_instructions_link_text: "Read more about Oregon Climate Action Hub's analytics."
-        end_user_analytics: "Allow Oregon Climate Action Hub to track members activity in order to improve Oregon Climate Action Hub's services"
+        sharetribe_analytics: "TelemartUAE analytics"
+        sharetribe_analytics_info_text_with_instructions: "To improve TelemartUAE's services and support, TelemartUAE tracks website members activity. Personal data is not collected and this information is not shared outside the TelemartUAE team. This tracking can be disabled entirely. %{instructions_link}"
+        sharetribe_analytics_instructions_link_text: "Read more about TelemartUAE's analytics."
+        end_user_analytics: "Allow TelemartUAE to track members activity in order to improve TelemartUAE's services"
         save: "Save settings"
       logo_link:
         title: "Logo link"
@@ -609,7 +609,7 @@ en:
         user_fields: "User fields"
       footer:
         footer: Footer
-        offer_pro: "Configure and remove all Oregon Climate Action Hub branding from the footer of your marketplace by %{upgrade_pro_plan_link}."
+        offer_pro: "Configure and remove all TelemartUAE branding from the footer of your marketplace by %{upgrade_pro_plan_link}."
         upgrade_plan_link: "upgrading to the Pro plan or higher"
         menu_links: "Footer links"
         language: Language
@@ -857,9 +857,9 @@ en:
     paypal_accounts:
       marketplace_paypal_integration: "Payment system preferences"
       preferences_updated: "Payment system preferences updated"
-      marketplace_currency_used: "Oregon Climate Action Hub uses %{currency} as its currency."
+      marketplace_currency_used: "TelemartUAE uses %{currency} as its currency."
       contact_support_link_text: "contact us"
-      integration_info_text: "The payment system is powered by PayPal. To allow your users to pay you through Oregon Climate Action Hub, you must connect your PayPal account. Once you have connected your PayPal account, you can choose a minimum transaction size and a possible commission fee."
+      integration_info_text: "The payment system is powered by PayPal. To allow your users to pay you through TelemartUAE, you must connect your PayPal account. Once you have connected your PayPal account, you can choose a minimum transaction size and a possible commission fee."
 
       link_paypal_personal_account_label: "Are you providing products or services yourself?"
       link_paypal_personal_account: "If so, you will also need to connect your PayPal account to %{personal_payment_preferences_link}."
@@ -868,7 +868,7 @@ en:
       personal_payment_preferences_link_text: "your personal website account"
       read_more_about_paypal: "Read more about the payment system"
       edit_payment_settings: "Edit payment settings"
-      supported_currencies_information_text: "Oregon Climate Action Hub's online payment system supports 24 currencies. If your currency is not on the list, please %{contact_support_link}. If you change the website currency, existing listings will retain their old currency. You need to edit those listings individually to convert them to the new currency."
+      supported_currencies_information_text: "TelemartUAE's online payment system supports 24 currencies. If your currency is not on the list, please %{contact_support_link}. If you change the website currency, existing listings will retain their old currency. You need to edit those listings individually to convert them to the new currency."
       currency_change_warning_text: "Heads up: if you move forward with this currency change, don't forget to ask your sellers to manually edit their existing listings to get the currency update."
       marketplace_currency_label: "Website currency:"
       minimum_listing_price_label: "Minimum transaction size:"
@@ -895,7 +895,7 @@ en:
       general_settings_updated: "Payment system general settings updated"
       transaction_fee_settings_updated: "Transaction fee settings updated"
       choose_popup_text: |-
-          If you want to allow your users to accept online payments, you need to choose the currency for your website and then connect at least one of the two payment providers supported by Oregon Climate Action Hub: Stripe and PayPal. You can also choose to use both, which means your users will be able to accept payments with either payment method.
+          If you want to allow your users to accept online payments, you need to choose the currency for your website and then connect at least one of the two payment providers supported by TelemartUAE: Stripe and PayPal. You can also choose to use both, which means your users will be able to accept payments with either payment method.
           You can create a new account with either service if you don't have one already. Once you have connected an account, you can choose a possible fee you're charging from each transaction.
           What's the difference between Stripe and PayPal? Stripe allows you to delay payout to the seller up to 3 months and offers one payment method (credit/debit card). Stripe also allows your sellers to receive money directly to their bank account simply by providing their bank details. PayPal provides two payment methods (credit card and PayPal account) and offers a protection program for buyers and sellers. It requires your sellers to create a PayPal Business Account to accept payments.
           If you use Stripe, its fees will be deducted from your transaction fee, so remember to set a high enough minimum fee. If you use PayPal, its fees will be charged from the seller separately, in addition to your transaction fee. Stripe and PayPal have a bit different fee structure. In most cases Stripe's fees are a bit lower.
@@ -1248,8 +1248,8 @@ en:
       cancel_it_link_text: "cancel it"
       automatic_confirmation: "If you don't confirm or cancel the order within %{days_to_automatic_confirmation} days after the request was accepted, we will mark it automatically as completed."
     payment_settings_reminder:
-      remember_to_add_payment_details: "Remember to add your payment details if you would like to receive payments through Oregon Climate Action Hub."
-      you_have_added_listing_with_payment: "Thank you for posting! To receive payments for %{listing_link} through Oregon Climate Action Hub, you will need to connect a PayPal account."
+      remember_to_add_payment_details: "Remember to add your payment details if you would like to receive payments through TelemartUAE."
+      you_have_added_listing_with_payment: "Thank you for posting! To receive payments for %{listing_link} through TelemartUAE, you will need to connect a PayPal account."
       please_go_to_payment_settings: "Please go to your %{payment_settings_link} and fill in the required payment information. You can disregard this message if you are linking to another payment system or what you posted is free."
       payment_settings_link: "payment settings"
     transaction_confirmed:
@@ -1505,8 +1505,8 @@ en:
       page_removed_reason: "There are a few possible reasons for this. For example, a user might have removed their account or a post might have been removed."
     error_410_title: "page removed"
     error_500:
-      temporary_unavailable: "We are sorry, but Oregon Climate Action Hub is temporarily unavailable."
-      unable_to_process: "Oregon Climate Action Hub is unable to process your request right now. Please try again in a few moments."
+      temporary_unavailable: "We are sorry, but TelemartUAE is temporarily unavailable."
+      unable_to_process: "TelemartUAE is unable to process your request right now. Please try again in a few moments."
       we_hate_this: "We hate when this happens! We have been informed about the situation and we are fixing it."
       refer_to_error_id: "If you wish to contact support regarding this issue, please include an error ID \"%{error_id}\" in your message."
     error_500_title: "page loading failed"
@@ -1650,7 +1650,7 @@ en:
       add_lots_of_email_addresses: "As you are an administrator, here is a tip: if you plan to send lots of invitations, you should use an emailing tool or your personal email."
       this_article_link: "this article"
       invitation_emails_field_placeholder: "friend1@example.com, friend2@example.com, ..."
-      invitation_message_field_placeholder: "I joined Oregon Climate Action Hub and you should, too!"
+      invitation_message_field_placeholder: "I joined TelemartUAE and you should, too!"
       errors_in_emails: "Check that the email addresses you added are valid and don't contain any unusual characters. If you added multiple addresses, make sure they are separated with commas."
     list_item:
       review: review
@@ -1682,8 +1682,8 @@ en:
       search_engine_not_responding: "Search is currently unavailable. Try searching again soon."
   infos:
     about:
-      default_about_text_title: "What is Oregon Climate Action Hub?"
-      default_about_text: "Oregon Climate Action Hub lets you share the best of Oregon: things to do, places to explore, and more!"
+      default_about_text_title: "What is TelemartUAE?"
+      default_about_text: "TelemartUAE lets you share the best of Oregon: things to do, places to explore, and more!"
       click_here_link_text: "Click Here"
     how_to_use:
       default_title: "How It Works"
@@ -1708,10 +1708,10 @@ en:
       settings: Settings
       feedback: "Contact the %{service_name} team"
     application:
-      join_this_community: "Join Oregon Climate Action Hub"
+      join_this_community: "Join TelemartUAE"
       read_more: "Read more"
       feedback: "Your message to the %{service_name} team"
-      dont_use_to_contact_support: "We noticed you're an admin of %{service_name}. This form is what your users use to contact you. You cannot use this form to contact Oregon Climate Action Hub support. You can do that via the support widget in the bottom right corner of the admin panel instead."
+      dont_use_to_contact_support: "We noticed you're an admin of %{service_name}. This form is what your users use to contact you. You cannot use this form to contact TelemartUAE support. You can do that via the support widget in the bottom right corner of the admin panel instead."
       feedback_forum: "feedback forum"
       feedback_handle: Feedback
       give_feedback: "Contact Us"
@@ -1897,17 +1897,17 @@ en:
       you_need_to_confirm_your_account_first: "You need to confirm your email. Please check your inbox."
       you_must_fill_all_the_fields: "Please fill in all the fields."
       you_unfollowed_listing: "You are no longer following this post."
-      joining_community_failed: "Failed to join Oregon Climate Action Hub."
+      joining_community_failed: "Failed to join TelemartUAE."
       can_not_delete_email: "You cannot remove the email address."
       user_does_not_have_email_to_delete: "You don't have the email address you're trying to remove."
       email_deleted: "Email removed"
       listing_author_payment_details_missing: "Please contact the author by clicking the 'Contact' button. They need to update their payment details to receive payments."
       images_are_processing: "We are processing your images. They'll be visible soon."
-      listing_author_payment_details_missing_no_free: "Please contact the Oregon Climate Action Hub team to ask them to contact and advise the listing author to update their payment details to receive payments."
+      listing_author_payment_details_missing_no_free: "Please contact the TelemartUAE team to ask them to contact and advise the listing author to update their payment details to receive payments."
       maintenance_mode:
-        zero: "Oregon Climate Action Hub will now go offline for maintenance."
-        one: "Oregon Climate Action Hub will be offline for maintenance in %{count} minute."
-        other: "Oregon Climate Action Hub will be offline for maintenance in %{count} minutes."
+        zero: "TelemartUAE will now go offline for maintenance."
+        one: "TelemartUAE will be offline for maintenance in %{count} minute."
+        other: "TelemartUAE will be offline for maintenance in %{count} minutes."
       automatically_logged_out_please_sign_in: "You have been automatically logged out. Please log in again."
       stripe_you_account_balance_is_not_0: "You account balance is not 0 so it cannot be deleted. This might mean that you have transactions waiting to be completed or that there is money waiting to be paid out to your bank account. Please contact the %{service_name} team to learn more."
       visit_admin: "Would you like to %{link}?"
@@ -2136,7 +2136,7 @@ en:
       select_category: "Select category"
       select_subcategory: "Select subcategory"
       select_transaction_type: "Select post type"
-      you_need_to_fill_payout_details_before_accepting: "Note: You need to connect a PayPal account before you can accept payments through Oregon Climate Action Hub. Go to %{payment_settings_link} to fill in the details, or you can disregard the message if you plan to link to another payment system."
+      you_need_to_fill_payout_details_before_accepting: "Note: You need to connect a PayPal account before you can accept payments through TelemartUAE. Go to %{payment_settings_link} to fill in the details, or you can disregard the message if you plan to link to another payment system."
       contact_admin_link_text: "Please contact us via the Menu."
       community_not_configured_for_payments: "%{service_name} hasn't been configured for payments, so you cannot add posts yet. Please %{contact_admin_link} for details."
       payment_settings_link: "payment settings"
@@ -2390,7 +2390,7 @@ en:
     show:
       contact: "Contact %{person}"
       about_me: "About me:"
-      add_description: "Please add to your profile to help build trust and the Oregon Climate Action Hub community."
+      add_description: "Please add to your profile to help build trust and the TelemartUAE community."
       add_location: "Add location"
       add_phone_number: "Add Phone Number"
       address: "Location:"
@@ -2466,15 +2466,15 @@ en:
       change_email: Change
       confirm_your_email: "Please check your email inbox to confirm your address."
       account_confirmation_instructions: "You will soon receive an email with a link to confirm your email address. If you don't see it, please check your spam folder. After confirming your address, you can join %{service_name}."
-      account_confirmation_instructions_title_admin: "Welcome to Oregon Climate Action Hub!"
-      your_marketplace_has_now_been_created: "Oregon Climate Action Hub has now been created. Please confirm your email address."
+      account_confirmation_instructions_title_admin: "Welcome to TelemartUAE!"
+      your_marketplace_has_now_been_created: "TelemartUAE has now been created. Please confirm your email address."
 #      account_confirmation_instructions_admin: "You will soon receive an email with a link to confirm your email address. Don't forget to check your spam folder!"
       before_full_access_you_need_to_confirm_email: "Please check your email and confirm your address."
       before_confirmation_only_access_admin_dashboard: "Before confirmation you can only access the %{admin_dashboard_link}."
       user_feedback_link_text: "contact us"
       admin_dashboard_link_text: "admin panel"
       account_confirmation_instructions_admin: "You should have received an email at %{email_address} with a confirmation link. If you don't see it, check your spam folder or click the button below to resend the email. Once it arrives, open the included link to confirm your address, after which you'll get full access to your marketplace. If you need any help, don't hesitate to %{support_link}."
-      contact_support_link_text: "contact Oregon Climate Action Hub support"
+      contact_support_link_text: "contact TelemartUAE support"
   settings:
     account:
       change: Change
@@ -2507,7 +2507,7 @@ en:
         status_confirmed: Confirmed
         status_pending: Pending
     notifications:
-      email_from_admins: "I'm willing to receive occasional emails from Oregon Climate Action Hub."
+      email_from_admins: "I'm willing to receive occasional emails from TelemartUAE."
       i_want_to_get_email_notification_when: "Receive Email Notifications When..."
       newsletters: "Emails from administrators"
       community_updates: Newsletters
@@ -2928,7 +2928,7 @@ en:
     can_accept_stripe_and_paypal: "You can receive money to your bank account or your PayPal account."
     to_accept_paypal: "To receive money to your PayPal account, you need to connect your PayPal account. Your customers will be able to pay with PayPal."
     connect_paypal: "Connect PayPal account"
-    wrong_setup: "There is something wrong with the payment system setup in this Oregon Climate Action Hub: Stripe Connect has not been enabled. Please contact the team to let them know that they should enable Stripe Connect in their Stripe Dashboard."
+    wrong_setup: "There is something wrong with the payment system setup in this TelemartUAE: Stripe Connect has not been enabled. Please contact the team to let them know that they should enable Stripe Connect in their Stripe Dashboard."
     invalid_bank_account_number: "Please check that your bank account is entered correctly and matches your country."
     invalid_postal_code: "Invalid postal code for %{country}"
   seo_sections:

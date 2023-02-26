@@ -46,7 +46,7 @@ class CommunityMailer < ActionMailer::Base
 
   def deliver_community_updates
     Person.find_each do |person|
-      next unless person.should_receive_community_updates_now?
+      #next unless person.should_receive_community_updates_now?
 
       community = person.accepted_community
       next unless community
