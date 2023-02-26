@@ -43,11 +43,12 @@ module PaypalHelper
 
   # Private
   def account_prepared?(community_id:, person_id: nil, settings: Maybe(nil))
-    acc_state = accounts_api.get(community_id: community_id, person_id: person_id).maybe()[:state].or_else(:not_connected)
-    commission_type = settings[:commission_type].or_else(nil)
-
-    acc_state == :verified || (acc_state == :connected && commission_type == :none)
-    acc_state == :verified || acc_state == :connected
+    # acc_state = accounts_api.get(community_id: community_id, person_id: person_id).maybe()[:state].or_else(:not_connected)
+    # commission_type = settings[:commission_type].or_else(nil)
+    #
+    # acc_state == :verified || (acc_state == :connected && commission_type == :none)
+    # acc_state == :verified || acc_state == :connected
+    nil
   end
   private_class_method :account_prepared?
 
