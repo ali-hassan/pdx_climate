@@ -650,7 +650,7 @@ class Community < ApplicationRecord
   # FIXME-RF not the best place
   def active_payment_types
     supported = []
-    supported << :paypal if PaypalHelper.paypal_active?(self.id)
+    # supported << :paypal if false
     supported << :stripe if StripeHelper.stripe_active?(self.id)
     supported.size > 1 ? supported : supported.first
   end
