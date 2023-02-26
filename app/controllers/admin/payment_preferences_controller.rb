@@ -71,7 +71,7 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
   MAX_COMMISSION_PERCENTAGE = 100
 
   def ensure_payments_enabled
-    @paypal_enabled = PaypalHelper.paypal_provisioned?(@current_community.id)
+    @paypal_enabled = false
     @stripe_enabled = StripeHelper.stripe_provisioned?(@current_community.id)
     unless @paypal_enabled || @stripe_enabled
       flash[:error] = t("admin.communities.settings.payments_not_enabled")

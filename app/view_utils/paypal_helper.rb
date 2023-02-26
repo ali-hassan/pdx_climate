@@ -34,7 +34,7 @@ module PaypalHelper
       payment_process: :preauthorize)
       .maybe
 
-    account_prepared?(community_id: community_id, person_id: person_id, settings: payment_settings)
+    # account_prepared?(community_id: community_id, person_id: person_id, settings: payment_settings)
   end
 
   def account_prepared_for_community?(community_id)
