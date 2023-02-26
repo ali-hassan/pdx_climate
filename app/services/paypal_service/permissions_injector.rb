@@ -1,7 +1,7 @@
 module PaypalService
   module PermissionsInjector
     def paypal_permissions
-      @paypal_permissions ||= build_paypal_permissions
+      @paypal_permissions ||= nil ##build_paypal_permissions
     end
 
     module_function
