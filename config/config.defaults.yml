@@ -117,10 +117,10 @@ default: &default_settings
   aws_ses_sns_topic:
 
   # Paypal credentials for the platform owner.
-  paypal_username:
-  paypal_password:
-  paypal_signature:
-  paypal_partner_id:  # payerID for paypal platform owner account
+  paypal_username: xxxxxxxxxxxxx
+  paypal_password: xxxxxxxxxxxxx
+  paypal_signature: xxxxxxxxxxxxx
+  paypal_partner_id: xxxxxxxxxxxxx # payerID for paypal platform owner account
   paypal_app_id: APP-80W284485P519543T # Global test id
   paypal_button_source: # Unique value given to you by your PayPal contact
 
@@ -245,7 +245,7 @@ default: &default_settings
   # Global Service name
   # If you want to call this service with different name on this server, you can specify it here
   # This can also be set community specific in community.settings["service_name"]
-  global_service_name: sharetribe
+  global_service_name: ORClimate
 
   # Icon set
   # By default Sharetribe uses the Font Awesome Icon Pack
