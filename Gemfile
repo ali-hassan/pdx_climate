@@ -182,6 +182,7 @@ gem 'ffi', '>= 1.9.25'
 gem 'rubyzip', '~> 1.2.2'
 gem 'bootsnap', '1.4.3'
 gem 'daemons'
+gem 'recaptcha'
 
 group :deployment do
   gem "capistrano", "=3.11"
