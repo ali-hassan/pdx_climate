@@ -18,18 +18,31 @@
     = form.text_area :content
     = form.hidden_field :url, :value => request.headers["HTTP_REFERER"] || request.original_url
     = recaptcha_tags
+    %br
+    %br
     = form.button t("layouts.application.send_feedback_to_admin")
 
-:javascript
-    window.addEventListener('load', () => {
-    const $recaptcha = document.querySelector('#g-recaptcha-response');
-    if ($recaptcha) {
-      $recaptcha.setAttribute('required', 'required');
-    }
-    })
-    window.addEventListener('load', () => {
-    const $recaptcha = document.querySelector('#g-recaptcha-response');
-    if ($recaptcha) {
-      $recaptcha.setAttribute('required', 'required');
-    }
-    })
+- content_for :extra_javascript do
+  :javascript
+    $(document).ready(function() {
+
+      window.addEventListener('load', () => {
+      const $recaptcha = document.querySelector('#g-recaptcha-response');
+      if ($recaptcha) {
+        $recaptcha.setAttribute('required', 'required');
+      }
+      else{
+        $("#g-recaptcha-response-error").css({"display":"none"});
+        }
+      });
+      $("#g-recaptcha-response-error").on("change", function () {
+        $("#g-recaptcha-response-error").css({"display":"none"});
+      });
+      $(".recaptcha-checkbox-checkmark").on("change", function () {
+        $("#g-recaptcha-response-error").css({"display":"none"});
+      });
+      $(".recaptcha-checkbox-border").on("change", function () {
+        $("#g-recaptcha-response-error").css({"display":"none"});
+      });
+
+    });
