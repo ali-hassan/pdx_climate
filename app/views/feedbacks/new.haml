@@ -18,8 +18,6 @@
     = form.text_area :content
     = form.hidden_field :url, :value => request.headers["HTTP_REFERER"] || request.original_url
     = recaptcha_tags
-    %br
-    %br
     = form.button t("layouts.application.send_feedback_to_admin")
 
 - content_for :extra_javascript do
@@ -46,3 +44,8 @@
       });
 
     });
+
+:css
+  label.error {
+    margin: -2.25em 0 1.75em 0 !important;
+  }
