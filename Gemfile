@@ -98,7 +98,7 @@ gem "request_store", '~> 1.3.2'
 # ActionMailer dependency that needs forced update for security patch
 gem 'mail', '~> 2.6.6.rc1'
 
-gem 'tzinfo-data', '~> 1.2017', '>= 1.2017.2'
+gem 'tzinfo-data', '~> 1.2020.1'#, '>= 1.2017.2'
 
 group :staging, :production do
   gem 'newrelic_rpm', '~> 4.2.0.334'
@@ -183,6 +183,7 @@ gem 'rubyzip', '~> 1.2.2'
 gem 'bootsnap', '1.4.3'
 gem 'daemons'
 gem 'recaptcha'
+gem 'add_to_calendar'
 
 group :deployment do
   gem "capistrano", "=3.11"
