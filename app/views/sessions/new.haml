@@ -49,7 +49,8 @@
     = text_field_tag "person[login]", nil, :value => session[:form_login], :class => :text_field, :id => :main_person_login, :autofocus => true
     %label{:for => "password"}
       = t('common.password') + ":"
-    = password_field_tag "person[password]", nil, :class => :text_field, :id => :main_person_password
+    = password_field_tag "person[password]", nil, :class => :text_field, :id => "#{:main_person_password} id_password"
+    %i#togglePassword.far.fa-eye{:style => "margin-left: -30px; cursor: pointer;"}
     = button_tag(t('.login'), :class => "send_button", :id => :main_log_in_button)
     .links
       - unless @facebook_merge || @google_merge
@@ -59,3 +60,16 @@
 
 #password_forgotten
   = render :partial => "sessions/password_forgotten"
+
+- content_for :extra_javascript do
+  :javascript
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#id_password');
+
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye slash icon
+      this.classList.toggle('fa-eye-slash');
+    });
