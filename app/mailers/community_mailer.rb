@@ -46,9 +46,7 @@ class CommunityMailer < ActionMailer::Base
 
   def deliver_community_updates
     Person.find_each do |person|
-      if person.emails.first.address == "ali.hassan.mirzaa@gmail.com"
-        next unless person.should_receive_community_updates_now?
-      end
+      next unless person.should_receive_community_updates_now?
 
 
       community = person.accepted_community

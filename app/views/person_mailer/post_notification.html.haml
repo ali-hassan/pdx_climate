@@ -1,0 +1,21 @@
+= t("emails.new_member_notification.new_member_has_joined", :community => @community.full_name(@person.locale))
+
+
+%div{:style => "margin: 15px 0; padding: 10px; background-color: #d1c9b4;"}
+  -#%b= t("emails.new_member_notification.person_name")
+  -#= PersonViewUtils.person_display_name(@person, @community)
+  -#%br/
+  -#%b= t("emails.new_member_notification.person_email")
+  =   "Hello #{PersonViewUtils.person_display_name(@person, @community)}!" #@email
+
+  =# t("emails.new_member_notification.this_is_automatic_message", :community => @community.full_name(@person.locale))
+
+
+  = "Please note that #{@post.title} is scheduled to expire on #{@post.valid_until}."
+
+  %p If it's still relevant and you would like this post to stay active, please update the Expiration date field in the post, along with any information that may have changed since you created it.
+
+  %p Thank you for helping keep the Oregon Climate Action Hub full of amazing timely resources! We appreciate you!
+  %br
+  %p Sincerely (and enthusiastically),
+  %p The ORCAH Team

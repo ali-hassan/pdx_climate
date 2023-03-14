@@ -303,6 +303,23 @@ class PersonMailer < ActionMailer::Base
     end
   end
 
+  def post_notification(post, community, admin)
+    @community = community
+    @no_settings = true
+    @post  = post
+    @person = @post.author
+    @email = @person.emails.last.address
+      with_locale(admin.locale, community.locales.map(&:to_sym), community.id) do
+      address = admin.confirmed_notification_emails_to
+      if address.present?
+        premailer_mail(:to => address,
+                       :from => community_specific_sender(community),
+                       :subject => "Update about #{@post.title}",
+                       :template_name => "post_notification")
+      end
+    end
+  end
+
   def email_confirmation(email, community)
     @current_community = community
     @no_settings = true
