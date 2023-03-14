@@ -314,7 +314,7 @@ class PersonMailer < ActionMailer::Base
       if address.present?
         premailer_mail(:to => address,
                        :from => community_specific_sender(community),
-                       :subject => "Update about #{@post.title}",
+                       :subject => "Your post is about to expire",
                        :template_name => "post_notification")
       end
     end
