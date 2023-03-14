@@ -1,6 +1,6 @@
 class ListingExpireNotificationJob < Struct.new(:listing_id, :community_id)
 
-  DELAY = delay_time
+  DELAY = 30.minutes
 
   include DelayedAirbrakeNotification
 
