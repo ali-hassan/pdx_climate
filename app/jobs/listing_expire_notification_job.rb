@@ -1,6 +1,6 @@
 class ListingExpireNotificationJob < Struct.new(:listing_id, :community_id)
 
-  DELAY = 30.minutes
+  DELAY = 10.minutes
 
   include DelayedAirbrakeNotification
 
@@ -13,7 +13,7 @@ class ListingExpireNotificationJob < Struct.new(:listing_id, :community_id)
   end
 
   def perform
-    return if !listing || listing.closed? || !author
+    return if !listing || listing.closed?
 
     MailCarrier.deliver_now(PersonMailer.post_notification(listing, community, admin))
   end

@@ -203,7 +203,7 @@ class ListingsController < ApplicationController
         @listing.reorder_listing_images(params, @current_user.id)
         notify_about_new_listing
         service.create_successful(@listing)
-        Delayed::Job.enqueue(PersonMailer.post_notification(@listing, @current_community, Email.first.person), 3, (@listing.valid_until -  30.minutes))
+        Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community, Email.first.person), 5, (@listing.valid_until -  30.minutes)) if @listing.valid_until.present?
 
         if shape.booking?
           anchor = shape.booking_per_hour? ? 'manage-working-hours' : ''
@@ -220,6 +220,13 @@ class ListingsController < ApplicationController
         ).html_safe
         redirect_to new_listing_path
       end
+    end
+  end
+
+  def update_listing_for_expiry
+    @current_community = Community.first
+    Listing.all.map do |listing|
+      Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community), 5, (listing.valid_until -  30.minutes))  if listing.valid_until.present? && listing.valid_until > Time.now
     end
   end
 
