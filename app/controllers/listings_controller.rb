@@ -203,7 +203,7 @@ class ListingsController < ApplicationController
         @listing.reorder_listing_images(params, @current_user.id)
         notify_about_new_listing
         service.create_successful(@listing)
-        Delayed::Job.enqueue(ListingExpireNotificationJob.new(@listing, @current_community, Email.first.person), 5, (@listing.valid_until -  30.minutes)) if @listing.valid_until.present?
+        Delayed::Job.enqueue(ListingExpireNotificationJob.new(@listing.id, @current_community.id), 5, (@listing.valid_until -  30.minutes)) if @listing.valid_until.present?
 
         if shape.booking?
           anchor = shape.booking_per_hour? ? 'manage-working-hours' : ''
