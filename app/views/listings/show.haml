@@ -108,7 +108,9 @@
                 = link_to @listing.event['start_at'].strftime('%a %b %e') + ' - ' + @listing.event['start_at_time'].strftime('%-I:%M%P') + "-" + @listing.event['end_at_time'].strftime('%-I:%M%P'), @ical
               - else
                 - @ical = AddToCalendar::URLs.new(start_datetime: start, end_datetime: end_t, title: @listing.title, timezone: 'EST').google_url
-                = link_to @listing.event['start_at'].strftime('%a %b %e') + ' - ' + @listing.event['start_at_time'].strftime('%-I:%M%P') + ' to ' + @listing.event['end_at'].strftime('%a %b %e') + ' - ' + @listing.event['end_at_time'].strftime('%-I:%M%P'), @ical
+                -# = link_to @listing.event['start_at'].strftime('%a %b %e') + ' - ' + @listing.event['start_at_time'].strftime('%-I:%M%P') + ' to ' + @listing.event['end_at'].strftime('%a %b %e') + ' - ' + @listing.event['end_at_time'].strftime('%-I:%M%P'), @ical
+                - time_diff = link_to listing_event['start_at'].strftime('%-I:%M%P') + ' - ' + listing_event['end_at'].strftime('%-I:%M%P')
+                = link_to listing_event['start_at'].strftime('%a %b %e') + ' to ' + listing_event['end_at'].strftime('%a %b %e') + '@' + time_diff, @ical, style: "font-size: 15px;"
 
 
         - if !@current_community.private?
