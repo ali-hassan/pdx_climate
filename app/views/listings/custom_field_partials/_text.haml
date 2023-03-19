@@ -4,7 +4,7 @@
   = custom_field_value.text_value
 - val = custom_field_value.text_value
 - if val.include?("https")
-  %a{href: val}
+  %a{href: val, target: "_blank"}
     = val
 - else
   = val
