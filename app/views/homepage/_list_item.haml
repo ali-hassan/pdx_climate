@@ -44,8 +44,8 @@
                   - time = listing_event['start_at'].strftime('%a %b %e @ %H:%M%P')
                   - hour = time.split(':')
                   - start =  Time.new(date.year, date.month, date.day, hour[0], hour.last, 0)
-                  - end_date = listing_event['end_at']
-                  - end_time = listing_event['end_at'].strftime('%a %b %e @ %-I:%M%P')
+                  - end_date = listing_event['end_at'] || Date.now
+                  - end_time = listing_event['end_at'].strftime('%a %b %e @ %-I:%M%P') || DateTime.now.strftime('%a %b %e @ %-I:%M%P') 
                   - end_hour = end_time.split(':')
                   - end_t =  Time.new(end_date.year, end_date.month, end_date.day, end_hour[0], end_hour.last, 0)
                   - @ical = AddToCalendar::URLs.new(start_datetime: start, end_datetime: end_t, title: listing.title, timezone: 'EST').google_url
