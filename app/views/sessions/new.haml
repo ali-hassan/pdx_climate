@@ -49,8 +49,8 @@
     = text_field_tag "person[login]", nil, :value => session[:form_login], :class => :text_field, :id => :main_person_login, :autofocus => true
     %label{:for => "password"}
       = t('common.password') + ":"
-    = password_field_tag "person[password]", nil, :class => :text_field, :id => "#{:main_person_password} id_password"
-    %input.eye_icon{:type => "checkbox", style: "margin-right: 10px;"}  Show Password
+    = password_field_tag "person[password]", nil, :class => :text_field, :id => "#{:main_person_password}"
+    %input.eye_icon{:type => "checkbox", style: "margin-right: 10px;", id: "show_pass"}  Show Password
     = button_tag(t('.login'), :class => "send_button", :id => :main_log_in_button)
     .links
       - unless @facebook_merge || @google_merge
@@ -63,10 +63,10 @@
 
 - content_for :extra_javascript do
   :javascript
-    $(".eye_icon").on('click',function() {
-      if ($("#id_password").attr('type') === 'password') {
-        $("#id_password").attr('type', 'text');
+    $("#show_pass").on('click',function() {
+      if ($("#main_person_password").attr('type') === 'password') {
+        $("#main_person_password").attr('type', 'text');
       } else {
-        $('#id_password').attr('type', 'password');
+        $('#main_person_password').attr('type', 'password');
       }
     });
