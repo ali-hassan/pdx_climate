@@ -82,11 +82,11 @@
                 - date = @listing.event['start_at']
                 - time = @listing.event['start_at'].strftime('%a %b %e @ %H:%M%P')
                 - hour = time.split(':')
-                - start =  Time.new(date.year, date.month, date.day, hour[0], hour.last, 0)
+                - start =  Time.new(date.year, date.month, date.day, 00, hour.last, 0)
                 - end_date = @listing.event['end_at']
                 - end_time = @listing.event['end_at'].strftime('%a %b %e @ %-I:%M%P')
                 - end_hour = end_time.split(':')
-                - end_t =  Time.new(end_date.year, end_date.month, end_date.day, end_hour[0], end_hour.last, 0)
+                - end_t =  Time.new(end_date.year, end_date.month, end_date.day, 12, end_hour.last, 0)
                 - @ical = AddToCalendar::URLs.new(start_datetime: start, end_datetime: end_t, title: @listing.title, timezone: 'EST').google_url
                 - if @listing.event['start_at'].to_date == @listing.event['end_at'].to_date
                   = link_to @listing.event['start_at'].strftime('%a %b %e @ %H:%M%P') + ' - ' + @listing.event['end_at'].strftime('%-I:%M%P'), @ical
