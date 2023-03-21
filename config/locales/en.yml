@@ -2539,7 +2539,7 @@ en:
       first_name_only: "(not shown to other users)"
       location_description: "You can provide your street address or just a city or zip code. Examples: \"200 Market St., Portland, OR\" or \"Bend, OR\" or \"97701\"."
       display_name: "Display Name"
-      display_name_description: "If you represent an organization, you can use its name as your Display Name. Display Name is shown to other users instead of your first and last name."
+      display_name_description: "If you represent an organization, you can use its name as your Display Name (up to 30 characters). Display Name is shown to other users instead of your first and last name."
       profile_picture_description: "The profile picture should be in a square format (1:1 ratio), for example, 800x800 pixels. Otherwise, it will be cropped to fit."
       phone_number: "Phone Number"
       profile_picture: "Profile Picture"
