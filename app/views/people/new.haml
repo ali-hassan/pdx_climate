@@ -59,6 +59,7 @@
     = form.password_field :password, :class => :text_field, :maxlength => "255", :id => "person_password1"
     = form.label :password2, t('.password_again')
     = form.password_field :password2, :class => :text_field, :maxlength => "255"
+    %input.eye_icon{:type => "checkbox", style: "margin-right: 10px;"}  Show Password
 
     - if @service.has_person_custom_fields?
       - @service.custom_field_values.each_with_index do |custom_field_value, index|
@@ -104,3 +105,14 @@
     = button_tag t('.create_new_account')
 
 = render :partial => "help_texts", :collection => ["terms", "help_invitation_code", "privacy"], :as => :field
+- content_for :extra_javascript do
+  :javascript
+    $(".eye_icon").on('click',function() {
+      if ($("#person_password1").attr('type') === 'password') {
+        $("#person_password1").attr('type', 'text');
+        $("#person_password2").attr('type', 'text');
+      } else {
+        $('#person_password1').attr('type', 'password');
+        $('#person_password2').attr('type', 'password');
+      }
+    });
