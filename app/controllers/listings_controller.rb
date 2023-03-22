@@ -227,6 +227,7 @@ class ListingsController < ApplicationController
     @listing = @list.dup
     @listing.uuid = nil
     @listing.location  = @list.location.dup
+    @listing.listing_images  = @list.listing_images.dup
     @listing.save(validate: false)
     flash[:success] = "Successfully cloned the post"
     redirect_to @listing, status: :see_other
