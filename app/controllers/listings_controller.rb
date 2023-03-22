@@ -222,6 +222,13 @@ class ListingsController < ApplicationController
       end
     end
   end
+  def duplicate_post
+    @list = Listing.find(params[:id])
+    @listing = @list.dup
+    @listing.uuid = nil
+    @listing.save(validate: false)
+    redirect_to @listing, status: :see_other
+  end
 
   def update_listing_for_expiry
     @current_community = Community.first

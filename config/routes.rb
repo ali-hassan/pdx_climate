@@ -461,6 +461,7 @@ Rails.application.routes.draw do
             put :close
             put :move_to_top
             put :show_in_updates_email
+            put :duplicate_post
           end
           collection do
             get :new_form_content
