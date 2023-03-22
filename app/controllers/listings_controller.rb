@@ -226,9 +226,16 @@ class ListingsController < ApplicationController
     @list = Listing.find(params[:id])
     @listing = @list.dup
     @listing.uuid = nil
-    @listing.location  = @list.location.dup
-    @listing.listing_images  = @list.listing_images.dup
+    location  = @list.location.dup
     @listing.save(validate: false)
+
+    listing_images  = @list.listing_images.each do |listing_image|
+      listing_img = listing_image.dup
+      listing_img.listing_id = @listing.id
+      listing_img.save
+    end
+    location.listing_id = @listing.id
+    location.save
     flash[:success] = "Successfully cloned the post"
     redirect_to @listing, status: :see_other
   end
