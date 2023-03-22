@@ -226,6 +226,7 @@ class ListingsController < ApplicationController
     @list = Listing.find(params[:id])
     @listing = @list.dup
     @listing.uuid = nil
+    @listing.location  = @list.location.dup
     @listing.save(validate: false)
     redirect_to @listing, status: :see_other
   end
