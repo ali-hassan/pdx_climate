@@ -204,7 +204,7 @@
         .listing-view-admin-link
           = link_to edit_listing_path(@listing), data: { method: "put", remote: "true" }, :id => "add-to-updates-email"  do
             .icon-with-text-container
-              = icon_tag("mail", ["icon-part"])
+              = icon_tag("ss-binoculars", ["icon-part"])
               .text-part#add-to-updates-email-text{data: {:"action-loading" => t("listings.edit_links.clone_this_post"), :"action-error" => t("listings.edit_links.clone_post_error"), :"action-success"=> t("listings.edit_links.clone_post_success")}}= t("listings.edit_links.clone_this_post")
 
 - content_for :extra_javascript do

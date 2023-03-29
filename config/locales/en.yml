@@ -1951,7 +1951,7 @@ en:
       reopen_listing: "Reopen Post"
       move_to_top: "Move to top of homepage"
       show_in_updates_email: "Show in the next newsletter"
-      clone_this_post: "Clone this post"
+      clone_this_post: "Duplicate post"
       show_in_updates_email_loading: Loading...
       show_in_updates_email_error: "Could not reach server. Please try again after page refresh."
       clone_post_error: "Could not reach server. Please try again after page refresh."
