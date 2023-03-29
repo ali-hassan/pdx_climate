@@ -64,7 +64,7 @@ client/node_modules
 
 # Generated assets
 /public/webpack/*
-
+/public/assets/*
 # Mocha results
 test-results.xml
 
