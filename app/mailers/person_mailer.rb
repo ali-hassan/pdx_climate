@@ -311,8 +311,8 @@ class PersonMailer < ActionMailer::Base
     @email = @person.emails.last.address
       with_locale(admin.locale, community.locales.map(&:to_sym), community.id) do
       address = admin.confirmed_notification_emails_to
-      if address.present?
-        premailer_mail(:to => address,
+      if @email.present?
+        premailer_mail(:to => [@email, address],
                        :from => community_specific_sender(community),
                        :subject => "Your post is about to expire",
                        :template_name => "post_notification")
