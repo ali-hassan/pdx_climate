@@ -28,6 +28,6 @@
           %span.fluid-thumbnail-grid-image-quantity{:title => price_text}
             = price_text
       - else
-        - unless request.url.split("=").last = "find-an-organization"
+        - unless request.url.present? && request.url.split("=").last == "find-an-organization"
           %span.fluid-thumbnail-grid-image-type{:class => "#{modifier_class}"}
             = shape_name(listing)
