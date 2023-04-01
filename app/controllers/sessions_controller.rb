@@ -211,8 +211,8 @@ class SessionsController < ApplicationController
 
   # Google setup phase hook, that is used to dynamically set up a omniauth strategy for google on customer basis
   def google_setup
-    request.env["omniauth.strategy"].options[:client_id] = @current_community.google_client_id || APP_CONFIG.google_client_id
-    request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_client_secret || APP_CONFIG.google_client_secret
+    request.env["omniauth.strategy"].options[:client_id] = @current_community.google_connect_id || APP_CONFIG.google_client_id
+    request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_connect_secret || APP_CONFIG.google_client_secret
     request.env["omniauth.strategy"].options[:iframe] = true
     request.env["omniauth.strategy"].options[:scope] = "public_profile,email"
     request.env["omniauth.strategy"].options[:info_fields] = "name,email,last_name,first_name"
