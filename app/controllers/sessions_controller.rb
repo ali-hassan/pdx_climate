@@ -95,9 +95,9 @@ class SessionsController < ApplicationController
   def request_new_password
     person =
       Person
-      .joins("LEFT OUTER JOIN emails ON emails.person_id = people.id")
-      .where("emails.address = :email AND (people.is_admin = '1' OR people.community_id = :cid)", email: params[:email], cid: @current_community.id)
-      .first
+        .joins("LEFT OUTER JOIN emails ON emails.person_id = people.id")
+        .where("emails.address = :email AND (people.is_admin = '1' OR people.community_id = :cid)", email: params[:email], cid: @current_community.id)
+        .first
     if person
       token = person.reset_password_token_if_needed
       MailCarrier.deliver_later(PersonMailer.reset_password_instructions(person, params[:email], token, @current_community))
@@ -115,9 +115,9 @@ class SessionsController < ApplicationController
     I18n.locale = origin_locale if origin_locale
 
     persons = Person
-              .includes(:emails, :community_memberships)
-              .references(:emails)
-              .where(["people.facebook_id = ? OR emails.address = ?", data.id, data.email]).uniq
+                .includes(:emails, :community_memberships)
+                .references(:emails)
+                .where(["people.facebook_id = ? OR emails.address = ?", data.id, data.email]).uniq
 
     people_in_this_community = persons.select { |p| p.is_admin? || p.community_memberships.map(&:community_id).include?(@current_community.id) }
     person_by_fb_id = people_in_this_community.find { |p| p.facebook_id == data.id }
@@ -154,9 +154,9 @@ class SessionsController < ApplicationController
     I18n.locale = origin_locale if origin_locale
 
     persons = Person
-              .includes(:emails, :community_memberships)
-              .references(:emails)
-              .where(["people.google_id = ? OR emails.address = ?", data.id, data.email]).uniq
+                .includes(:emails, :community_memberships)
+                .references(:emails)
+                .where(["people.google_id = ? OR emails.address = ?", data.id, data.email]).uniq
 
     people_in_this_community = persons.select { |p| p.is_admin? || p.community_memberships.map(&:community_id).include?(@current_community.id) }
     person_by_google_id = people_in_this_community.find { |p| p.google_id == data.id }
@@ -211,21 +211,21 @@ class SessionsController < ApplicationController
 
   # Google setup phase hook, that is used to dynamically set up a omniauth strategy for google on customer basis
   def google_setup
-    request.env["omniauth.strategy"].options[:client_id] = @current_community.google_connect_id || APP_CONFIG.google_client_id
-    request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_connect_secret || APP_CONFIG.google_client_secret
+    request.env["omniauth.strategy"].options[:client_id] = @current_community.google_client_id || APP_CONFIG.google_client_id
+    request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_client_secret || APP_CONFIG.google_client_secret
     request.env["omniauth.strategy"].options[:iframe] = true
     request.env["omniauth.strategy"].options[:scope] = "public_profile,email"
     request.env["omniauth.strategy"].options[:info_fields] = "name,email,last_name,first_name"
 
     if @current_community.facebook_connect_enabled?
-      request.env["omniauth.strategy"].options[:client_id] = @current_community.google_connect_id || APP_CONFIG.google_client_id
-      request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_connect_secret || APP_CONFIG.google_client_secret
-    # else
-    #   # to prevent plain requests to /people/auth/facebook even when "login with Facebook" button is hidden
-    #   request.env["omniauth.strategy"].options[:client_id] = ""
-    #   request.env["omniauth.strategy"].options[:client_secret] = ""
-    #   request.env["omniauth.strategy"].options[:client_options][:authorize_url] = login_url
-    #   request.env["omniauth.strategy"].options[:client_options][:site_url] = login_url
+      request.env["omniauth.strategy"].options[:client_id] = @current_community.facebook_connect_id || APP_CONFIG.fb_connect_id
+      request.env["omniauth.strategy"].options[:client_secret] = @current_community.facebook_connect_secret || APP_CONFIG.fb_connect_secret
+    else
+      # to prevent plain requests to /people/auth/facebook even when "login with Facebook" button is hidden
+      request.env["omniauth.strategy"].options[:client_id] = ""
+      request.env["omniauth.strategy"].options[:client_secret] = ""
+      request.env["omniauth.strategy"].options[:client_options][:authorize_url] = login_url
+      request.env["omniauth.strategy"].options[:client_options][:site_url] = login_url
     end
 
     render :plain => "Setup complete.", :status => 404 #This notifies the ominauth to continue
