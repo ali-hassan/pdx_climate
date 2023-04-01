@@ -217,16 +217,16 @@ class SessionsController < ApplicationController
     request.env["omniauth.strategy"].options[:scope] = "public_profile,email"
     request.env["omniauth.strategy"].options[:info_fields] = "name,email,last_name,first_name"
 
-    # if @current_community.facebook_connect_enabled?
-    #   request.env["omniauth.strategy"].options[:client_id] = @current_community.facebook_connect_id || APP_CONFIG.fb_connect_id
-    #   request.env["omniauth.strategy"].options[:client_secret] = @current_community.facebook_connect_secret || APP_CONFIG.fb_connect_secret
-    # else
-    #   # to prevent plain requests to /people/auth/facebook even when "login with Facebook" button is hidden
-    #   request.env["omniauth.strategy"].options[:client_id] = ""
-    #   request.env["omniauth.strategy"].options[:client_secret] = ""
-    #   request.env["omniauth.strategy"].options[:client_options][:authorize_url] = login_url
-    #   request.env["omniauth.strategy"].options[:client_options][:site_url] = login_url
-    # end
+    if @current_community.facebook_connect_enabled?
+      request.env["omniauth.strategy"].options[:client_id] = @current_community.facebook_connect_id || APP_CONFIG.fb_connect_id
+      request.env["omniauth.strategy"].options[:client_secret] = @current_community.facebook_connect_secret || APP_CONFIG.fb_connect_secret
+    else
+      # to prevent plain requests to /people/auth/facebook even when "login with Facebook" button is hidden
+      request.env["omniauth.strategy"].options[:client_id] = ""
+      request.env["omniauth.strategy"].options[:client_secret] = ""
+      request.env["omniauth.strategy"].options[:client_options][:authorize_url] = login_url
+      request.env["omniauth.strategy"].options[:client_options][:site_url] = login_url
+    end
 
     render :plain => "Setup complete.", :status => 404 #This notifies the ominauth to continue
   end
@@ -250,3 +250,5 @@ class SessionsController < ApplicationController
     user && community.consent.eql?(user.consent)
   end
 end
+# google_client_secret: CFkhr8HTcWv8adBxIzGsNKdO
+# google_client_id: 842421732181-ah45g1364v6hhi81kub41ehn2q7b5uk1.apps.googleusercontent.com
