@@ -218,8 +218,8 @@ class SessionsController < ApplicationController
     request.env["omniauth.strategy"].options[:info_fields] = "name,email,last_name,first_name"
 
     if @current_community.facebook_connect_enabled?
-      request.env["omniauth.strategy"].options[:client_id] = @current_community.facebook_connect_id || APP_CONFIG.fb_connect_id
-      request.env["omniauth.strategy"].options[:client_secret] = @current_community.facebook_connect_secret || APP_CONFIG.fb_connect_secret
+      request.env["omniauth.strategy"].options[:client_id] = @current_community.google_connect_id || APP_CONFIG.google_client_id
+      request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_connect_secret || APP_CONFIG.google_client_secret
     # else
     #   # to prevent plain requests to /people/auth/facebook even when "login with Facebook" button is hidden
     #   request.env["omniauth.strategy"].options[:client_id] = ""
