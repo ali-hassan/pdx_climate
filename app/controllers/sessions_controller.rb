@@ -227,7 +227,6 @@ class SessionsController < ApplicationController
       # request.env["omniauth.strategy"].options[:client_options][:authorize_url] = login_url
       request.env["omniauth.strategy"].options[:client_options][:site_url] = login_url
     end
-
     render :plain => "Setup complete.", :status => 404 #This notifies the ominauth to continue
   end
 
