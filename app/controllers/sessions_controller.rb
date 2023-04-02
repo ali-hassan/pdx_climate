@@ -214,7 +214,7 @@ class SessionsController < ApplicationController
     request.env["omniauth.strategy"].options[:client_id] = @current_community.google_connect_id || APP_CONFIG.google_client_id
     request.env["omniauth.strategy"].options[:client_secret] = @current_community.google_connect_secret || APP_CONFIG.google_client_secret
     request.env["omniauth.strategy"].options[:iframe] = true
-    request.env["omniauth.strategy"].options[:scope] = "public_profile,email"
+    request.env["omniauth.strategy"].options[:scope] = "userinfo.email"
     request.env["omniauth.strategy"].options[:info_fields] = "name,email,last_name,first_name"
 
     if @current_community.facebook_connect_enabled?
