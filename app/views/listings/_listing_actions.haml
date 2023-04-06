@@ -201,11 +201,16 @@
               = icon_tag("mail", ["icon-part"])
               .text-part#add-to-updates-email-text{data: {:"action-loading" => t("listings.edit_links.show_in_updates_email_loading"), :"action-error" => t("listings.edit_links.show_in_updates_email_error"), :"action-success"=> t("listings.edit_links.show_in_updates_email_success")}}= t("listings.edit_links.show_in_updates_email")
 
+        -#.listing-view-admin-link
+        -#  = link_to edit_listing_path(@listing), data: { method: "put" }, :id => "add-to-updates-email"  do
+        -#    .icon-with-text-container
+        -#      = icon_tag("ss-addfile", ["icon-part"])
+        -#      .text-part#add-to-updates-email-text{data: {:"action-loading" => t("listings.edit_links.clone_this_post"), :"action-error" => t("listings.edit_links.clone_post_error"), :"action-success"=> t("listings.edit_links.clone_post_success")}}= t("listings.edit_links.clone_this_post")
+
         .listing-view-admin-link
-          = link_to edit_listing_path(@listing), data: { method: "put", remote: "true" }, :id => "add-to-updates-email"  do
-            .icon-with-text-container
-              = icon_tag("ss-addfile", ["icon-part"])
-              .text-part#add-to-updates-email-text{data: {:"action-loading" => t("listings.edit_links.clone_this_post"), :"action-error" => t("listings.edit_links.clone_post_error"), :"action-success"=> t("listings.edit_links.clone_post_success")}}= t("listings.edit_links.clone_this_post")
+          %a.icon-with-text-container{href: edit_listing_path(@listing)}
+            = icon_tag("ss-addfile", ["icon-part"])
+            .text-part= t("listings.edit_links.clone_this_post")
 
 - content_for :extra_javascript do
   :javascript
