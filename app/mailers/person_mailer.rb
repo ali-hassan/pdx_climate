@@ -312,7 +312,8 @@ class PersonMailer < ActionMailer::Base
       with_locale(admin.locale, community.locales.map(&:to_sym), community.id) do
       address = admin.confirmed_notification_emails_to
       if @email.present?
-        premailer_mail(:to => [@email, address],
+        puts "Email= #{@email}"
+        premailer_mail(:to => @email,
                        :from => community_specific_sender(community),
                        :subject => "Your post is about to expire",
                        :template_name => "post_notification")
@@ -329,6 +330,7 @@ class PersonMailer < ActionMailer::Base
     @show_branding_info = !PlanService::API::Api.plans.get_current(community_id: community.id).data[:features][:whitelabel]
     with_locale(email.person.locale, community.locales.map(&:to_sym), community.id) do
       email.update_attribute(:confirmation_sent_at, Time.now)
+      puts "Email= #{@email}"
       premailer_mail(:to => email.address,
                      :from => community_specific_sender(community),
                      :subject => t("devise.mailer.confirmation_instructions.subject"),
