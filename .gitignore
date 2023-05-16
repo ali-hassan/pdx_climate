@@ -39,7 +39,8 @@ log/*.pid
 log/.DS_Store
 log/*.age
 log/*.db
-#node_modules
+log/capistrano.log.0
+node_modules
 coverage/
 .idea/
 *.sock
