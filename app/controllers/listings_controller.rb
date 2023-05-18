@@ -225,6 +225,7 @@ class ListingsController < ApplicationController
   def duplicate_post
     @list = Listing.find(params[:id])
     @listing = @list.dup
+    # update uuid to nil
     @listing.uuid = nil
     location  = @list.location.dup
     @listing.save(validate: false)
