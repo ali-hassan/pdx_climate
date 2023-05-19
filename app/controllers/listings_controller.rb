@@ -240,8 +240,12 @@ class ListingsController < ApplicationController
     flash[:success] = "Successfully cloned the post"
     redirect_to @listing, status: :see_other
   end
-
+  
+  #
+  #update all for expiry of listings
+  #
   def update_listing_for_expiry
+    #update all for expiry of listings
     @current_community = Community.first
     Listing.all.map do |listing|
       Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community), 5, (listing.valid_until -  30.minutes))  if listing.valid_until.present? && listing.valid_until > Time.now
