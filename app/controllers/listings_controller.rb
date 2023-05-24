@@ -244,7 +244,7 @@ class ListingsController < ApplicationController
   #
   #update all for expiry of listings
   #
-  def update_listing_for_expiry
+  def update_expiry
     #update all for expiry of listings
     @current_community = Community.first
     Listing.all.map do |listing|
