@@ -251,13 +251,13 @@ class ListingsController < ApplicationController
       Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community), 5, (listing.valid_until -  30.minutes))  if listing.valid_until.present? && listing.valid_until > Time.now
     end
   end
-  # def update_expiry
-  #   #update all for expiry of listings
-  #   @current_community = Community.first
-  #   Listing.all.map do |listing|
-  #     Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community), 5, (listing.valid_until -  30.minutes))  if listing.valid_until.present? && listing.valid_until > Time.now
-  #   end
-  # end
+  def update_expiry
+    #update all for expiry of listings
+    @current_community = Community.first
+    Listing.all.map do |listing|
+      Delayed::Job.enqueue(ListingExpireNotificationJob.new(listing, @current_community), 5, (listing.valid_until -  30.minutes))  if listing.valid_until.present? && listing.valid_until > Time.now
+    end
+  end
 
   def edit
     @selected_tribe_navi_tab = "home"
