@@ -626,10 +626,10 @@ class ListingsController < ApplicationController
       Delayed::Job.enqueue(NotifyFollowersJob.new(@listing.id, @current_community.id), :run_at => NotifyFollowersJob::DELAY.from_now)
     end
 
-    flash[:notice] = t(
-      "layouts.notifications.listing_created_successfully",
-      :new_listing_link => view_context.link_to(t("layouts.notifications.create_new_listing"),new_listing_path)
-    ).html_safe
+    # flash[:notice] = t(
+    #   "layouts.notifications.listing_created_successfully",
+    #   :new_listing_link => view_context.link_to(t("layouts.notifications.create_new_listing"),new_listing_path)
+    # ).html_safe
 
     # Onboarding wizard step recording
     state_changed = Admin::OnboardingWizard.new(@current_community.id)
