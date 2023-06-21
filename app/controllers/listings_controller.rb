@@ -378,6 +378,10 @@ class ListingsController < ApplicationController
     redirect_to @listing and return
   end
 
+  def show_off
+    raise "Not Implemented yet."
+  end
+
   def create_repeat_rule
     repeats_every_counter = params[:repeats_every].to_i
 
