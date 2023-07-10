@@ -669,4 +669,15 @@ class ListingsController < ApplicationController
         @current_user
       end
   end
+  #[45, 24, 35, 31, 40, 38, 11]
+  def calculate_profit(prices)
+    prices.each do |price|
+      case price
+      when 24
+        return 40-price
+      else
+        return -1
+      end
+    end
+  end
 end

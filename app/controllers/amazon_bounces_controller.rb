@@ -56,7 +56,7 @@ class AmazonBouncesController < ApplicationController
       Email.unsubscribe_email_from_community_updates(recipient['emailAddress'])
     end
     unless complaint['complaintFeedbackType'].nil?
-      logger.info "\nComplaint with feedback from Amazon SNS notification center:"
+      #logger.info "\nComplaint with feedback from Amazon SNS notification center:"
       logger.info msg.to_s
     end
   end
